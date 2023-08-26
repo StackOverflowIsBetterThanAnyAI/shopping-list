@@ -7,8 +7,11 @@ const cartItems = [
     { id: 3, amount: 2, articleName: 'Pizza' },
 ]
 const ShoppingCart = () => {
+    // TODO: add types and comments
     const [articles, setArticles] = useState(cartItems)
     let upcomingId = articles.length
+    const [addAmount, setAddAmount] = useState<number>(1)
+    const [addItem, setAddItem] = useState<string>('')
 
     const handleRemove = (idToRemove: number) => {
         setArticles(articles.filter((article) => article.id !== idToRemove))
@@ -50,13 +53,24 @@ const ShoppingCart = () => {
                 <div>
                     <label>
                         Amount:
-                        <input type="number" />
+                        <input
+                            type="number"
+                            value={addAmount}
+                            onChange={(e) =>
+                                setAddAmount(e.target.valueAsNumber)
+                            }
+                            min={1}
+                        />
                     </label>
                     <label>
                         Item:
-                        <input type="text" />
+                        <input
+                            type="text"
+                            value={addItem}
+                            onChange={(e) => setAddItem(e.target.value)}
+                        />
                     </label>
-                    <button onClick={() => addItemToList(2, 'Bananen')}>
+                    <button onClick={() => addItemToList(addAmount, addItem)}>
                         Add Item To List
                     </button>
                 </div>
