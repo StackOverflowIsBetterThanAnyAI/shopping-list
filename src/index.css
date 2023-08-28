@@ -4,6 +4,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: rgb(12, 12, 12);
+    background-color: rgb(255, 210, 184);
 }
 
 h1 {

@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 
-const cartItems = [
-    { id: 0, amount: 5, articleName: 'Banana' },
-    { id: 1, amount: 2, articleName: 'Apple' },
-    { id: 2, amount: 1, articleName: 'Milk' },
-    { id: 3, amount: 2, articleName: 'Pizza' },
-]
+type CartItem = {
+    id: number
+    amount: number
+    articleName: string
+}
+
+const initialCartItems: CartItem[] = []
 const ShoppingCart = () => {
-    // TODO: add types and comments
-    const [articles, setArticles] = useState(cartItems)
+    const [articles, setArticles] = useState<CartItem[]>(initialCartItems)
     let upcomingId = articles.length
     const [addAmount, setAddAmount] = useState<number>(1)
     const [addItem, setAddItem] = useState<string>('')
@@ -19,8 +19,6 @@ const ShoppingCart = () => {
     }
 
     const addItemToList = (amountToAdd: number, articleToAdd: string) => {
-        console.log(amountToAdd, articleToAdd)
-
         const insertAt = upcomingId
         const nextArticle = [
             ...articles.slice(0, insertAt),
@@ -36,43 +34,53 @@ const ShoppingCart = () => {
 
     return (
         <>
-            <h1>Shopping List</h1>
-            <ul>
-                Amount Item
-                {articles.map((article) => (
-                    <li key={article.id}>
-                        {article.amount} {article.articleName}{' '}
-                        <button onClick={() => handleRemove(article.id)}>
-                            Remove
-                        </button>
-                    </li>
-                ))}
-            </ul>
-            <div>
-                Insert New Item To List:
+            <div className="shoppingList">
+                <h1>Shopping List</h1>
+                <ul>
+                    <span>Amount </span>
+                    <span>Item</span>
+                    {articles.map((article) => (
+                        <div key={article.id}>
+                            <span>{article.amount} </span>
+                            <span>{article.articleName} </span>
+                            <button onClick={() => handleRemove(article.id)}>
+                                Remove
+                            </button>
+                        </div>
+                    ))}
+                </ul>
                 <div>
-                    <label>
-                        Amount:
-                        <input
-                            type="number"
-                            value={addAmount}
-                            onChange={(e) =>
-                                setAddAmount(e.target.valueAsNumber)
+                    Insert New Item To List:
+                    <div>
+                        <label>
+                            Amount:
+                            <input
+                                type="number"
+                                value={addAmount}
+                                onChange={(e) =>
+                                    setAddAmount(e.target.valueAsNumber)
+                                }
+                                min={1}
+                            />
+                        </label>
+                        <label>
+                            Item:
+                            <input
+                                type="text"
+                                value={addItem}
+                                onChange={(e) => setAddItem(e.target.value)}
+                            />
+                        </label>
+                        <button
+                            onClick={() =>
+                                addItem.length &&
+                                addAmount &&
+                                addItemToList(addAmount, addItem)
                             }
-                            min={1}
-                        />
-                    </label>
-                    <label>
-                        Item:
-                        <input
-                            type="text"
-                            value={addItem}
-                            onChange={(e) => setAddItem(e.target.value)}
-                        />
-                    </label>
-                    <button onClick={() => addItemToList(addAmount, addItem)}>
-                        Add Item To List
-                    </button>
+                        >
+                            Add Item To List
+                        </button>
+                    </div>
                 </div>
             </div>
         </>
