@@ -1,0 +1,10 @@
+.image-row {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    gap: 10px; /* Gap between images */
+}
+
+.image {
+    max-width: 100px; /* Ensure images don't exceed container width */
+    height: auto; /* Maintain aspect ratio */
+}

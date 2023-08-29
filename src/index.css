@@ -7,10 +7,6 @@ body {
     background-color: rgb(255, 210, 184);
 }
 
-h1 {
-    text-transform: uppercase;
-}
-
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;

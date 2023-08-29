@@ -1,0 +1,15 @@
+h1 {
+    text-transform: uppercase;
+}
+
+li {
+    list-style-type: none;
+}
+
+.shoppingList-gridContainer {
+    background-color: rgb(173, 248, 236);
+}
+
+.shoppingList-gridItem {
+    background-color: rgb(64, 255, 105);
+}

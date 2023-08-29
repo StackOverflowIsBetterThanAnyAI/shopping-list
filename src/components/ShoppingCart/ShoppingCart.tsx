@@ -1,4 +1,23 @@
 import React, { useState } from 'react'
+import ImageRow from '../ImageRow/ImageRow'
+
+import './ShoppingCart.css'
+
+import appleImage from '../../images/apple.png'
+import cherryImage from '../../images/cherry.png'
+import chickenImage from '../../images/chicken.png'
+import cocktailImage from '../../images/cocktail.png'
+import coffeeImage from '../../images/coffee.png'
+import croissantImage from '../../images/croissant.png'
+import icecreamImage from '../../images/icecream.png'
+import jamImage from '../../images/jam.png'
+import mcdonaldsImage from '../../images/mcdonalds.png'
+import melonImage from '../../images/melon.png'
+import muffinImage from '../../images/muffin.png'
+import pancakeImage from '../../images/pancake.png'
+import pizzaImage from '../../images/pizza.png'
+import tacoImage from '../../images/taco.png'
+import teaImage from '../../images/tea.png'
 
 type CartItem = {
     id: number
@@ -7,9 +26,11 @@ type CartItem = {
 }
 
 const initialCartItems: CartItem[] = []
+
 const ShoppingCart = () => {
     const [articles, setArticles] = useState<CartItem[]>(initialCartItems)
     let upcomingId = articles.length
+
     const [addAmount, setAddAmount] = useState<number>(1)
     const [addItem, setAddItem] = useState<string>('')
 
@@ -32,21 +53,43 @@ const ShoppingCart = () => {
         setArticles(nextArticle)
     }
 
+    const imageUrls = [
+        appleImage,
+        cherryImage,
+        chickenImage,
+        cocktailImage,
+        coffeeImage,
+        croissantImage,
+        icecreamImage,
+        jamImage,
+        mcdonaldsImage,
+        melonImage,
+        muffinImage,
+        pancakeImage,
+        pizzaImage,
+        tacoImage,
+        teaImage,
+    ]
+
     return (
         <>
             <div className="shoppingList">
                 <h1>Shopping List</h1>
-                <ul>
+                <ImageRow images={imageUrls} />
+                <ul className="shoppingList-gridContainer">
                     <span>Amount </span>
                     <span>Item</span>
                     {articles.map((article) => (
-                        <div key={article.id}>
+                        <li key={article.id} className="shoppingList-gridItem">
                             <span>{article.amount} </span>
                             <span>{article.articleName} </span>
-                            <button onClick={() => handleRemove(article.id)}>
+                            <button
+                                type="button"
+                                onClick={() => handleRemove(article.id)}
+                            >
                                 Remove
                             </button>
-                        </div>
+                        </li>
                     ))}
                 </ul>
                 <div>
@@ -72,6 +115,7 @@ const ShoppingCart = () => {
                             />
                         </label>
                         <button
+                            type="button"
                             onClick={() =>
                                 addItem.length &&
                                 addAmount &&
