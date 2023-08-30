@@ -1,10 +1,11 @@
 .image-row {
     display: flex;
     align-items: center; /* Align items vertically */
-    gap: 10px; /* Gap between images */
+    gap: 0.5vw; /* Gap between images */
+    background-color: rgb(48, 224, 136);
 }
 
 .image {
-    max-width: 100px; /* Ensure images don't exceed container width */
+    max-width: 3.5vw; /* Ensure images don't exceed container width */
     height: auto; /* Maintain aspect ratio */
 }

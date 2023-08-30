@@ -1,15 +1,12 @@
 body {
-    margin: 0;
+    background-color: rgb(255, 210, 184);
     font-family: 'Poppins-Regular';
+    font-size: 1vw;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: rgb(12, 12, 12);
-    background-color: rgb(255, 210, 184);
-}
-
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
+    margin: 0 auto;
+    max-width: 1040px;
 }
 
 @font-face {
