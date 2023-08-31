@@ -1,7 +1,7 @@
 .shoppingList-gridItem-header {
-    background-color: rgb(216, 224, 103);
+    background-color: rgb(231, 231, 231);
     display: grid;
-    grid-template-columns: repeat(4, 4vw 40vw 4vw 4vw);
+    grid-template-columns: repeat(4, 4vw 38vw 6vw 4vw);
     gap: 1vw;
-    padding: 0.125vw;
+    padding: 0.125vw 1vw;
 }

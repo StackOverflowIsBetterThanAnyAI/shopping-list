@@ -1,26 +1,44 @@
 h1 {
     text-transform: uppercase;
-    background-color: rgb(255, 132, 132);
     text-align: center;
     font-size: 2.5vw;
+    margin: 2vw 0 1vw 0;
+    padding-top: 1vw;
 }
 
 li {
     list-style-type: none;
 }
 
+.shoppingList {
+    background-color: rgba(255, 132, 132, 0.25);
+    margin-bottom: 2vw;
+}
+
 .shoppingList-gridContainer {
-    background-color: rgb(173, 248, 236);
+    padding: 1vw;
 }
 
 .shoppingList-gridItem {
-    background-color: rgb(64, 255, 105);
+    background-color: rgb(178, 214, 231);
     display: grid;
-    grid-template-columns: repeat(4, 4vw 40vw 4vw 4vw);
+    grid-template-columns: repeat(4, 4vw 38vw 6vw 4vw);
     gap: 1vw;
-    padding: 0.125vw;
+    padding: 0.125vw 1vw;
 }
 
 .textAlignCenter {
     text-align: center;
+}
+
+.shoppingList-addItemGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 4vw 6vw 2vw 8vw 6vw);
+    gap: 1vw;
+    padding: 0.125vw;
+}
+
+.shoppingList-addItemGridHeader {
+    margin-left: 2vw;
+    padding-bottom: 2vw;
 }

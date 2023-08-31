@@ -9,6 +9,18 @@ body {
     max-width: 1040px;
 }
 
+button {
+    font-family: 'Poppins-Regular';
+    font-size: 1vw;
+    color: rgb(12, 12, 12);
+}
+
+input {
+    font-family: 'Poppins-Regular';
+    font-size: 1vw;
+    color: rgb(12, 12, 12);
+}
+
 @font-face {
     font-family: 'Poppins-Medium';
     src: local('Poppins-Medium'), url('./fonts/Poppins-Medium.ttf');

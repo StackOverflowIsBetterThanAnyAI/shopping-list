@@ -113,15 +113,17 @@ const ShoppingCart = () => {
                             <button
                                 type="button"
                                 onClick={() => {
-                                    const newAmount = parseInt(
+                                    let newAmount = parseInt(
                                         prompt(
-                                            'Enter new amount:',
+                                            'Enter the new amount or cancel to leave it the same:',
                                             article.amount.toString()
                                         ) || article.amount.toString()
                                     )
+                                    if (isNaN(newAmount))
+                                        newAmount = article.amount
                                     const newArticle =
                                         prompt(
-                                            'Enter new article name:',
+                                            'Enter a new article name or cancel to leave it the same:',
                                             article.articleName
                                         ) || article.articleName
                                     handleEdit(
@@ -137,28 +139,24 @@ const ShoppingCart = () => {
                     ))}
                 </ul>
 
-                <div>
+                <div className="shoppingList-addItemGridHeader">
                     Add A New Item To The List:
-                    <div>
-                        <label>
-                            Amount:
-                            <input
-                                type="number"
-                                value={addAmount}
-                                onChange={(e) =>
-                                    setAddAmount(e.target.valueAsNumber)
-                                }
-                                min={1}
-                            />
-                        </label>
-                        <label>
-                            Item:
-                            <input
-                                type="text"
-                                value={addItem}
-                                onChange={(e) => setAddItem(e.target.value)}
-                            />
-                        </label>
+                    <div className="shoppingList-addItemGrid">
+                        <label>Amount:</label>
+                        <input
+                            type="number"
+                            value={addAmount}
+                            onChange={(e) =>
+                                setAddAmount(e.target.valueAsNumber)
+                            }
+                            min={1}
+                        />
+                        <label>Item:</label>
+                        <input
+                            type="text"
+                            value={addItem}
+                            onChange={(e) => setAddItem(e.target.value)}
+                        />
                         <button
                             type="button"
                             onClick={() => {
