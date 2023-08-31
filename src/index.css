@@ -13,12 +13,22 @@ button {
     font-family: 'Poppins-Regular';
     font-size: 1vw;
     color: rgb(12, 12, 12);
+    background-color: rgb(231, 231, 231);
+    border-radius: 4px;
+}
+
+button:hover {
+    cursor: pointer;
+    scale: 1.05;
 }
 
 input {
     font-family: 'Poppins-Regular';
     font-size: 1vw;
     color: rgb(12, 12, 12);
+    background-color: rgb(178, 214, 231);
+    border-radius: 4px;
+    padding: 0 0.25vw;
 }
 
 @font-face {

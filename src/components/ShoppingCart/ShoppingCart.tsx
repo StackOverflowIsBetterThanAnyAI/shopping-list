@@ -100,10 +100,42 @@ const ShoppingCart = () => {
                     <GridHeader />
                     {articles.map((article) => (
                         <li key={article.id} className="shoppingList-gridItem">
-                            <span className="textAlignCenter">
+                            <span
+                                className="textAlignCenter"
+                                onClick={() => {
+                                    let newAmount = parseInt(
+                                        prompt(
+                                            'Enter the new amount or cancel to leave it the same:',
+                                            article.amount.toString()
+                                        ) || article.amount.toString()
+                                    )
+                                    if (isNaN(newAmount))
+                                        newAmount = article.amount
+                                    handleEdit(
+                                        article.id,
+                                        newAmount,
+                                        article.articleName
+                                    )
+                                }}
+                            >
                                 {article.amount}
                             </span>
-                            <span>{article.articleName}</span>
+                            <span
+                                onClick={() => {
+                                    const newArticle =
+                                        prompt(
+                                            'Enter a new article name or cancel to leave it the same:',
+                                            article.articleName
+                                        ) || article.articleName
+                                    handleEdit(
+                                        article.id,
+                                        article.amount,
+                                        newArticle
+                                    )
+                                }}
+                            >
+                                {article.articleName}
+                            </span>
                             <button
                                 type="button"
                                 onClick={() => handleRemove(article.id)}
