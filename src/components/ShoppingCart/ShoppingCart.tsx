@@ -188,6 +188,7 @@ const ShoppingCart = () => {
                             type="text"
                             value={addItem}
                             onChange={(e) => setAddItem(e.target.value)}
+                            spellCheck={false}
                         />
                         <button
                             type="button"

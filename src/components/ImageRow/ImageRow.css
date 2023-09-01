@@ -1,12 +1,15 @@
 .image-row {
     display: flex;
-    align-items: center;
-    gap: 0.5vw;
     margin: 0 1vw;
+    padding: 0.5%;
     background-color: rgb(255, 210, 184);
+    overflow: auto;
+    align-content: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .image {
-    max-width: 3.5vw;
+    max-width: 6%;
     height: auto;
 }
