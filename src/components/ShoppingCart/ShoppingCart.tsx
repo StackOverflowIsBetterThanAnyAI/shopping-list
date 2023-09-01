@@ -109,7 +109,7 @@ const ShoppingCart = () => {
                                             article.amount.toString()
                                         ) || article.amount.toString()
                                     )
-                                    if (isNaN(newAmount))
+                                    if (isNaN(newAmount) || newAmount < 1)
                                         newAmount = article.amount
                                     handleEdit(
                                         article.id,
@@ -151,7 +151,7 @@ const ShoppingCart = () => {
                                             article.amount.toString()
                                         ) || article.amount.toString()
                                     )
-                                    if (isNaN(newAmount))
+                                    if (isNaN(newAmount) || newAmount < 1)
                                         newAmount = article.amount
                                     const newArticle =
                                         prompt(
