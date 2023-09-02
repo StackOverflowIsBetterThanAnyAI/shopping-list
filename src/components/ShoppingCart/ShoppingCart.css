@@ -1,3 +1,16 @@
+@media only screen and (min-width: 1040px) {
+    .shoppingList-addItemGrid {
+        grid-template-columns: repeat(5, 6.5% 12% 3.5% 15% 12%);
+    }
+}
+
+@media only screen and (max-width: 1040px) {
+    .shoppingList-addItemGrid {
+        /* TODO: adapt values - just demo */
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
 h1 {
     text-transform: uppercase;
     text-align: center;
@@ -33,7 +46,6 @@ li {
 
 .shoppingList-addItemGrid {
     display: grid;
-    grid-template-columns: repeat(5, 4vw 6vw 2vw 8vw 6vw);
     gap: 1vw;
     padding: 0.125vw;
 }

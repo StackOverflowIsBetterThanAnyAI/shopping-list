@@ -61,7 +61,7 @@ const ShoppingCart = () => {
         upcomingId--
     }
 
-    // TODO: edit item in Shopping List
+    // edit item in Shopping List
     const handleEdit = (
         idToEdit: number,
         newAmount: number,
@@ -189,6 +189,7 @@ const ShoppingCart = () => {
                             value={addItem}
                             onChange={(e) => setAddItem(e.target.value)}
                             spellCheck={false}
+                            autoFocus
                         />
                         <button
                             type="button"
