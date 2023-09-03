@@ -1,7 +1,19 @@
+@media only screen and (min-width: 1040px) {
+    .image-row {
+        margin: 0 16px;
+        padding: 8px;
+    }
+}
+
+@media only screen and (max-width: 1040px) {
+    .image-row {
+        margin: 0 1vw;
+        padding: 0.5vw;
+    }
+}
+
 .image-row {
     display: flex;
-    margin: 0 1vw;
-    padding: 0.5%;
     background-color: rgb(255, 210, 184);
     overflow: auto;
     align-content: flex-start;
