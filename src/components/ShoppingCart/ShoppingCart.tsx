@@ -190,7 +190,6 @@ const ShoppingCart = () => {
                             onChange={(e) => setAddItem(e.target.value)}
                             spellCheck={false}
                             autoFocus
-                            onFocus={blur}
                         />
                         <button
                             type="button"
