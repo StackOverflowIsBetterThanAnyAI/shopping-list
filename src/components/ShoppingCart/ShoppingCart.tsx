@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import ImageRow from '../ImageRow/ImageRow'
 
 import './ShoppingCart.css'
@@ -55,6 +55,9 @@ const ShoppingCart = () => {
     const [addAmount, setAddAmount] = useState<number>(1)
     const [addItem, setAddItem] = useState<string>('')
 
+    // update focus for input
+    const inputRef = useRef<HTMLInputElement | null>(null)
+
     // remove item from Shopping List
     const handleRemove = (idToRemove: number) => {
         setArticles(articles.filter((article) => article.id !== idToRemove))
@@ -89,6 +92,11 @@ const ShoppingCart = () => {
             ...articles.slice(insertAt),
         ]
         setArticles(nextArticle)
+        setAddItem('')
+        setAddAmount(1)
+        if (inputRef.current) {
+            inputRef.current.focus()
+        }
     }
 
     return (
@@ -187,9 +195,12 @@ const ShoppingCart = () => {
                         <input
                             type="text"
                             value={addItem}
-                            onChange={(e) => setAddItem(e.target.value)}
+                            onChange={(e) => {
+                                setAddItem(e.target.value)
+                            }}
                             spellCheck={false}
                             autoFocus
+                            ref={inputRef}
                         />
                         <button
                             type="button"
@@ -197,8 +208,6 @@ const ShoppingCart = () => {
                                 addItem.length &&
                                     addAmount &&
                                     addItemToList(addAmount, addItem)
-                                setAddItem('')
-                                setAddAmount(1)
                             }}
                         >
                             Add Item
