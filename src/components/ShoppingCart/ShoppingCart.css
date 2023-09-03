@@ -1,22 +1,61 @@
 @media only screen and (min-width: 1040px) {
     .shoppingList-addItemGrid {
-        grid-template-columns: repeat(5, 6.5% 12% 3.5% 15% 12%);
+        grid-template-columns: repeat(5, 80px 125px 40px 160px 125px);
+    }
+
+    .shoppingList-gridItem {
+        grid-template-columns: repeat(4, 80px 740px 80px 60px);
+        gap: 10px;
+        padding: 2px 10px;
+    }
+
+    .shoppingList {
+        margin-bottom: 32px;
+    }
+
+    .shoppingList-gridContainer {
+        padding: 16px;
+    }
+
+    .shoppingList-addItemGrid {
+        gap: 16px;
+        padding: 0.125vw;
+    }
+
+    .shoppingList-addItemGridHeader {
+        margin-left: 32px;
+        padding-bottom: 32px;
     }
 }
 
 @media only screen and (max-width: 1040px) {
     .shoppingList-addItemGrid {
-        /* TODO: adapt values - just demo */
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(5, 6.5% 12% 3.5% 15% 12%);
     }
-}
 
-h1 {
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 2.5vw;
-    margin: 2vw 0 1vw 0;
-    padding-top: 1vw;
+    .shoppingList-gridItem {
+        grid-template-columns: repeat(4, 4vw 38vw 6vw 4vw);
+        gap: 1vw;
+        padding: 0.125vw 1vw;
+    }
+
+    .shoppingList {
+        margin-bottom: 2vw;
+    }
+
+    .shoppingList-gridContainer {
+        padding: 1vw;
+    }
+
+    .shoppingList-addItemGrid {
+        gap: 1vw;
+        padding: 0.125vw;
+    }
+
+    .shoppingList-addItemGridHeader {
+        margin-left: 2vw;
+        padding-bottom: 2vw;
+    }
 }
 
 li {
@@ -25,19 +64,11 @@ li {
 
 .shoppingList {
     background-color: rgba(255, 132, 132, 0.25);
-    margin-bottom: 2vw;
-}
-
-.shoppingList-gridContainer {
-    padding: 1vw;
 }
 
 .shoppingList-gridItem {
     background-color: rgb(178, 214, 231);
     display: grid;
-    grid-template-columns: repeat(4, 4vw 38vw 6vw 4vw);
-    gap: 1vw;
-    padding: 0.125vw 1vw;
 }
 
 .textAlignCenter {
@@ -46,11 +77,4 @@ li {
 
 .shoppingList-addItemGrid {
     display: grid;
-    gap: 1vw;
-    padding: 0.125vw;
-}
-
-.shoppingList-addItemGridHeader {
-    margin-left: 2vw;
-    padding-bottom: 2vw;
 }

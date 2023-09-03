@@ -1,7 +1,42 @@
+@media only screen and (min-width: 1040px) {
+    * {
+        font-size: 18px;
+    }
+    h1 {
+        font-size: 36px;
+        margin: 20px 0 10px 0;
+        padding-top: 10px;
+    }
+    input {
+        font-size: 16px;
+        padding: 0 4px;
+    }
+    button {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 1040px) {
+    * {
+        font-size: 1vw;
+    }
+    h1 {
+        font-size: 2.5vw;
+        margin: 2vw 0 1vw 0;
+        padding-top: 1vw;
+    }
+    input {
+        font-size: 16px;
+        padding: 0 0.25vw;
+    }
+    button {
+        font-size: 1vw;
+    }
+}
+
 body {
     background-color: rgb(255, 210, 184);
     font-family: 'Poppins-Regular';
-    font-size: 1vw;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: rgb(12, 12, 12);
@@ -11,7 +46,6 @@ body {
 
 button {
     font-family: 'Poppins-Regular';
-    font-size: 1vw;
     color: rgb(12, 12, 12);
     background-color: rgb(231, 231, 231);
     border-radius: 4px;
@@ -22,13 +56,16 @@ button:hover {
     scale: 1.05;
 }
 
+h1 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
 input {
     font-family: 'Poppins-Regular';
-    font-size: 1vw;
     color: rgb(12, 12, 12);
     background-color: rgb(178, 214, 231);
     border-radius: 4px;
-    padding: 0 0.25vw;
 }
 
 @font-face {

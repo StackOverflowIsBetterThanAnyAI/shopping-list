@@ -140,7 +140,7 @@ const ShoppingCart = () => {
                                 type="button"
                                 onClick={() => handleRemove(article.id)}
                             >
-                                Remove
+                                X
                             </button>
                             <button
                                 type="button"
@@ -190,6 +190,7 @@ const ShoppingCart = () => {
                             onChange={(e) => setAddItem(e.target.value)}
                             spellCheck={false}
                             autoFocus
+                            onFocus={blur}
                         />
                         <button
                             type="button"
