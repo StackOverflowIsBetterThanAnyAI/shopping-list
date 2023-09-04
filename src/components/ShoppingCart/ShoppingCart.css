@@ -1,3 +1,4 @@
+/* mobile width */
 @media only screen {
     .shoppingList-addItemGrid {
         grid-template-columns: repeat(
@@ -31,6 +32,7 @@
     }
 }
 
+/* tablet width */
 @media only screen and (min-width: 768px) {
     .shoppingList-addItemGrid {
         grid-template-columns: repeat(
@@ -64,6 +66,7 @@
     }
 }
 
+/* desktop width */
 @media only screen and (min-width: 1020px) {
     .shoppingList-addItemGrid {
         grid-template-columns: repeat(5, 80px 125px 40px 160px 125px);
@@ -103,10 +106,10 @@
     display: grid;
 }
 
-.textAlignCenter {
-    text-align: center;
-}
-
 .shoppingList-addItemGrid {
     display: grid;
+}
+
+.textAlignCenter {
+    text-align: center;
 }

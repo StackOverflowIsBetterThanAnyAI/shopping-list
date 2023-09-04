@@ -28,7 +28,7 @@ type CartItem = {
 
 const initialCartItems: CartItem[] = []
 
-const imageUrls = [
+const imageUrls: string[] = [
     appleImage,
     cherryImage,
     chickenImage,
@@ -49,7 +49,7 @@ const imageUrls = [
 const ShoppingCart = () => {
     // initial Shopping List is empty
     const [articles, setArticles] = useState<CartItem[]>(initialCartItems)
-    let upcomingId = articles.length
+    let upcomingId: number = articles.length
 
     // state variables for adding new items to the Shopping List
     const [addAmount, setAddAmount] = useState<number>(1)
@@ -69,8 +69,8 @@ const ShoppingCart = () => {
         idToEdit: number,
         newAmount: number,
         newArticle: string
-    ) => {
-        const updatedArticles = articles.map((article) =>
+    ): void => {
+        const updatedArticles: CartItem[] = articles.map((article) =>
             article.id === idToEdit
                 ? { ...article, amount: newAmount, articleName: newArticle }
                 : article
@@ -79,8 +79,8 @@ const ShoppingCart = () => {
     }
 
     // add new item to Shopping List
-    const addItemToList = (amountToAdd: number, articleToAdd: string) => {
-        const insertAt = upcomingId
+    const addItemToList = (amountToAdd: number, articleToAdd: string): void => {
+        const insertAt: number = upcomingId
         const nextArticle = [
             ...articles.slice(0, insertAt),
             {

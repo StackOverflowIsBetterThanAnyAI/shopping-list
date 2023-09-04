@@ -1,3 +1,4 @@
+/* mobile width */
 @media only screen {
     .image-row {
         margin: 0 1vw;
@@ -5,6 +6,7 @@
     }
 }
 
+/* tablet width */
 @media only screen and (min-width: 768px) {
     .image-row {
         margin: 0 1vw;
@@ -12,11 +14,17 @@
     }
 }
 
+/* desktop width */
 @media only screen and (min-width: 1020px) {
     .image-row {
         margin: 0 16px;
         padding: 8px;
     }
+}
+
+.image {
+    max-width: 6%;
+    height: auto;
 }
 
 .image-row {
@@ -26,9 +34,4 @@
     align-content: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
-}
-
-.image {
-    max-width: 6%;
-    height: auto;
 }
