@@ -1,16 +1,24 @@
-@media only screen and (min-width: 1040px) {
+@media only screen {
     .shoppingList-gridItem-header {
-        grid-template-columns: repeat(4, 80px 740px 80px 60px);
-        gap: 10px;
-        padding: 2px 10px;
+        grid-template-columns: repeat(4, 15% 45% 20% 15%);
+        gap: 1vw;
+        padding: 0.125vw 1vw;
     }
 }
 
-@media only screen and (max-width: 1040px) {
+@media only screen and (min-width: 768px) {
     .shoppingList-gridItem-header {
         grid-template-columns: repeat(4, 4vw 38vw 6vw 4vw);
         gap: 1vw;
         padding: 0.125vw 1vw;
+    }
+}
+
+@media only screen and (min-width: 1020px) {
+    .shoppingList-gridItem-header {
+        grid-template-columns: repeat(4, 80px 720px 80px 60px);
+        gap: 10px;
+        padding: 2px 10px;
     }
 }
 

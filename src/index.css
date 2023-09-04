@@ -1,22 +1,22 @@
-@media only screen and (min-width: 1040px) {
+@media only screen {
     * {
-        font-size: 18px;
+        font-size: min(4vw, 16px);
     }
     h1 {
-        font-size: 36px;
-        margin: 20px 0 10px 0;
-        padding-top: 10px;
+        font-size: min(5vw, 20px);
+        margin: 2vw 0 1vw 0;
+        padding-top: 1vw;
     }
     input {
-        font-size: 16px;
-        padding: 0 4px;
+        font-size: min(4vw, 16px);
+        padding: 0 0.25vw;
     }
     button {
-        font-size: 16px;
+        font-size: min(3.5vw, 14px);
     }
 }
 
-@media only screen and (max-width: 1040px) {
+@media only screen and (min-width: 768px) {
     * {
         font-size: 1vw;
     }
@@ -34,6 +34,24 @@
     }
 }
 
+@media only screen and (min-width: 1020px) {
+    * {
+        font-size: 18px;
+    }
+    h1 {
+        font-size: 36px;
+        margin: 20px 0 10px 0;
+        padding-top: 10px;
+    }
+    input {
+        font-size: 16px;
+        padding: 0 4px;
+    }
+    button {
+        font-size: 16px;
+    }
+}
+
 body {
     background-color: rgb(255, 210, 184);
     font-family: 'Poppins-Regular';
@@ -41,7 +59,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     color: rgb(12, 12, 12);
     margin: 0 auto;
-    max-width: 1040px;
+    max-width: 1020px;
 }
 
 button {
