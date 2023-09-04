@@ -1,6 +1,9 @@
 @media only screen {
     .shoppingList-addItemGrid {
-        grid-template-columns: repeat(5, 15% 20% 9% 25% 25%);
+        grid-template-columns: repeat(
+            5,
+            min(18%, 75px) 10% min(12%, 50px) min(32%, 400px) 22%
+        );
     }
 
     .shoppingList-gridItem {
@@ -30,11 +33,14 @@
 
 @media only screen and (min-width: 768px) {
     .shoppingList-addItemGrid {
-        grid-template-columns: repeat(5, 6.5% 12% 3.5% 15% 12%);
+        grid-template-columns: repeat(
+            5,
+            min(21%, 75px) 13% min(13%, 50px) 35% 30%
+        );
     }
 
     .shoppingList-gridItem {
-        grid-template-columns: repeat(4, 4vw 38vw 6vw 4vw);
+        grid-template-columns: repeat(4, 10% 60% 15% 10%);
         gap: 1vw;
         padding: 0.125vw 1vw;
     }

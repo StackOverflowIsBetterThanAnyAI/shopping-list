@@ -1,42 +1,42 @@
 @media only screen {
     * {
-        font-size: min(4vw, 16px);
+        font-size: min(3.8vw, 16px);
     }
     h1 {
-        font-size: min(5vw, 20px);
-        margin: 2vw 0 1vw 0;
+        font-size: min(5vw, 24px);
+        margin: 0 0 1vw 0;
         padding-top: 1vw;
     }
     input {
-        font-size: min(4vw, 16px);
+        font-size: min(3.6vw, 15px);
         padding: 0 0.25vw;
     }
     button {
-        font-size: min(3.5vw, 14px);
+        font-size: min(3.2vw, 14px);
     }
 }
 
 @media only screen and (min-width: 768px) {
     * {
-        font-size: 1vw;
+        font-size: min(2w, 20px);
     }
     h1 {
-        font-size: 2.5vw;
+        font-size: min(2.7vw, 28px);
         margin: 2vw 0 1vw 0;
         padding-top: 1vw;
     }
     input {
-        font-size: 16px;
+        font-size: min(1.8vw, 18px);
         padding: 0 0.25vw;
     }
     button {
-        font-size: 1vw;
+        font-size: min(1.6vw, 16px);
     }
 }
 
 @media only screen and (min-width: 1020px) {
     * {
-        font-size: 18px;
+        font-size: 20px;
     }
     h1 {
         font-size: 36px;
@@ -44,11 +44,11 @@
         padding-top: 10px;
     }
     input {
-        font-size: 16px;
+        font-size: 18px;
         padding: 0 4px;
     }
     button {
-        font-size: 16px;
+        font-size: 18px;
     }
 }
 
