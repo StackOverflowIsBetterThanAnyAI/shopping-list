@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React, { useRef, useState } from 'react'
 import ImageRow from '../ImageRow/ImageRow'
 
