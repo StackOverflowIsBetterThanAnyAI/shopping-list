@@ -21,7 +21,9 @@ import pancakeImage from '../../images/pancake.png'
 import pizzaImage from '../../images/pizza.png'
 import tacoImage from '../../images/taco.png'
 import teaImage from '../../images/tea.png'
+
 import GridHeader from '../GridHeader/GridHeader'
+import ShoppingCartError from './ShoppingCartError'
 
 type CartItem = {
     id: number
@@ -237,22 +239,10 @@ const ShoppingCart = () => {
                             Add Item
                         </button>
                     </div>
-                    {(!isValidAmount || !isValidItem) && (
-                        <div className="errorInput">
-                            {!isValidAmount && (
-                                <div>
-                                    &#128712; You need to provide a valid Amount
-                                    of at least 1.
-                                </div>
-                            )}
-                            {!isValidItem && (
-                                <div>
-                                    &#128712; You need to provide a valid name
-                                    for the Item.
-                                </div>
-                            )}
-                        </div>
-                    )}
+                    <ShoppingCartError
+                        isValidAmount={isValidAmount}
+                        isValidItem={isValidItem}
+                    />
                 </div>
             </div>
         </>
