@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
 import React, { useRef, useState } from 'react'
@@ -57,6 +58,10 @@ const ShoppingCart = () => {
     const [addAmount, setAddAmount] = useState<number>(1)
     const [addItem, setAddItem] = useState<string>('')
 
+    // is true if either no item or an invalid amount has been entered
+    const [isValidAmount, setisValidAmount] = useState(true)
+    const [isValidItem, setisValidItem] = useState(true)
+
     // update focus for input
     const inputRef = useRef<HTMLInputElement | null>(null)
 
@@ -80,6 +85,20 @@ const ShoppingCart = () => {
         setArticles(updatedArticles)
     }
 
+    const handleClick = (addAmount: number, addItem: string): void => {
+        if (addItem.length && addAmount) addItemToList(addAmount, addItem)
+        else if (!addItem.length && !addAmount) {
+            setisValidItem(false)
+            setisValidAmount(false)
+        } else if (!addAmount) {
+            setisValidItem(true)
+            setisValidAmount(false)
+        } else if (!addItem.length) {
+            setisValidAmount(true)
+            setisValidItem(false)
+        }
+    }
+
     // add new item to Shopping List
     const addItemToList = (amountToAdd: number, articleToAdd: string): void => {
         const insertAt: number = upcomingId
@@ -99,6 +118,8 @@ const ShoppingCart = () => {
         if (inputRef.current) {
             inputRef.current.focus()
         }
+        setisValidAmount(true)
+        setisValidItem(true)
     }
 
     return (
@@ -147,12 +168,14 @@ const ShoppingCart = () => {
                                 {article.articleName}
                             </span>
                             <button
+                                className="delete"
                                 type="button"
                                 onClick={() => handleRemove(article.id)}
                             >
                                 X
                             </button>
                             <button
+                                className="edit"
                                 type="button"
                                 onClick={() => {
                                     let newAmount = parseInt(
@@ -188,6 +211,7 @@ const ShoppingCart = () => {
                         <input
                             type="number"
                             value={addAmount}
+                            autoFocus
                             onChange={(e) =>
                                 setAddAmount(e.target.valueAsNumber)
                             }
@@ -201,20 +225,34 @@ const ShoppingCart = () => {
                                 setAddItem(e.target.value)
                             }}
                             spellCheck={false}
-                            autoFocus
                             ref={inputRef}
                         />
                         <button
+                            className="add"
                             type="button"
                             onClick={() => {
-                                addItem.length &&
-                                    addAmount &&
-                                    addItemToList(addAmount, addItem)
+                                handleClick(addAmount, addItem)
                             }}
                         >
                             Add Item
                         </button>
                     </div>
+                    {(!isValidAmount || !isValidItem) && (
+                        <div className="errorInput">
+                            {!isValidAmount && (
+                                <div>
+                                    &#128712; You need to provide a valid Amount
+                                    of at least 1.
+                                </div>
+                            )}
+                            {!isValidItem && (
+                                <div>
+                                    &#128712; You need to provide a valid name
+                                    for the Item.
+                                </div>
+                            )}
+                        </div>
+                    )}
                 </div>
             </div>
         </>

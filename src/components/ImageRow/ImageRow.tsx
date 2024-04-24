@@ -8,13 +8,8 @@ type ImageRowProps = {
 const ImageRow: FC<ImageRowProps> = ({ images }) => {
     return (
         <div className="image-row">
-            {images.map((imageUrl, index) => (
-                <img
-                    key={index}
-                    src={imageUrl}
-                    alt={`Image ${index}`}
-                    className="image"
-                />
+            {images.map((imageUrl) => (
+                <img key={imageUrl} src={imageUrl} alt="" className="image" />
             ))}
         </div>
     )

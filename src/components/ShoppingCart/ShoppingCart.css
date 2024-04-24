@@ -27,7 +27,7 @@
     }
 
     .shoppingList-addItemGridHeader {
-        margin-left: 2vw;
+        margin: 0 2vw 0 2vw;
         padding-bottom: 2vw;
     }
 }
