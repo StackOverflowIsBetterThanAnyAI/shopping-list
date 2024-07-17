@@ -1,21 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
 /* mobile width */
 @media only screen {
     * {
         font-size: min(3.8vw, 16px);
     }
-    *:focus {
+
+    *:focus-visible {
         outline: 4px solid rgb(255, 240, 26);
         border-color: rgb(241, 241, 241);
     }
+
     h1 {
         font-size: min(5vw, 24px);
         margin: 0 0 1vw 0;
         padding-top: 1vw;
     }
+
     input {
         font-size: min(3.6vw, 15px);
         padding: 0 0.25vw;
     }
+
     button {
         font-size: min(3.2vw, 14px);
     }
@@ -26,19 +36,23 @@
     * {
         font-size: min(2w, 20px);
     }
-    *:focus {
+
+    *:focus-visible {
         outline: 4px solid rgb(255, 240, 26);
         border-color: rgb(241, 241, 241);
     }
+
     h1 {
         font-size: min(2.7vw, 28px);
         margin: 2vw 0 1vw 0;
         padding-top: 1vw;
     }
+
     input {
         font-size: min(1.8vw, 18px);
         padding: 0 0.25vw;
     }
+
     button {
         font-size: min(1.6vw, 16px);
     }
@@ -49,55 +63,56 @@
     * {
         font-size: 20px;
     }
-    *:focus {
+
+    *:focus-visible {
         outline: 4px solid rgb(255, 240, 26);
         border-color: rgb(241, 241, 241);
     }
+
     h1 {
         font-size: 36px;
         margin: 20px 0 10px 0;
         padding-top: 10px;
     }
+
     input {
         font-size: 18px;
         padding: 0 4px;
     }
+
     button {
         font-size: 18px;
     }
 }
 
 body {
-    background-color: rgb(255, 210, 184);
     font-family: 'Poppins-Regular';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: rgb(12, 12, 12);
+    color: rgb(236, 232, 232);
     margin: 0 auto;
-    max-width: 1020px;
 }
 
 button {
     font-family: 'Poppins-Regular';
     color: rgb(33, 33, 33);
-    background-color: rgb(159, 212, 143);
+    background-color: rgb(250, 204, 21);
     border-radius: 4px;
     border-width: 2px;
 }
 
 button:hover {
-    background-color: rgb(139, 184, 125);
+    background-color: rgb(233, 178, 26);
     cursor: pointer;
-    scale: 1.05;
 }
 
 button:active {
-    background-color: rgb(99, 143, 86);
+    background-color: rgb(209, 159, 23);
     cursor: pointer;
 }
 
 button.edit {
-    color: rgb(27, 27, 27);
+    color: rgb(33, 33, 33);
     background-color: rgb(206, 206, 206);
 }
 
@@ -126,6 +141,14 @@ button.delete:active {
 h1 {
     text-transform: uppercase;
     text-align: center;
+    letter-spacing: 2px;
+}
+
+html {
+    background-image: linear-gradient(rgb(47, 47, 47), rgb(69, 69, 69));
+    max-width: 1020px;
+    min-height: 100dvh;
+    margin: auto;
 }
 
 input {

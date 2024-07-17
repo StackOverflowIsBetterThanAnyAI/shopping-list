@@ -24,14 +24,10 @@
 
 .image {
     max-width: 6%;
-    height: auto;
 }
 
 .image-row {
     display: flex;
-    background-color: rgb(255, 210, 184);
-    overflow: auto;
-    align-content: flex-start;
+    background-color: rgb(207, 207, 207);
     justify-content: space-between;
-    flex-wrap: wrap;
 }

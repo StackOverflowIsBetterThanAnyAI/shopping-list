@@ -98,11 +98,12 @@
 }
 
 .shoppingList {
-    background-color: rgba(255, 132, 132, 0.25);
+    background-color: rgb(33, 33, 33);
 }
 
 .shoppingList-gridItem {
-    background-color: rgb(178, 214, 231);
+    color: rgb(33, 33, 33);
+    background-color: rgb(207, 207, 207);
     display: grid;
 }
 
