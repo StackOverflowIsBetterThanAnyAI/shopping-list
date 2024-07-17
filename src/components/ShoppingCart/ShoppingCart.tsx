@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import ImageRow from '../ImageRow/ImageRow'
 
 import './ShoppingCart.css'
@@ -49,7 +49,7 @@ const imageUrls: string[] = [
     pizzaImage,
     tacoImage,
     teaImage,
-].sort(() => 0.5 - Math.random())
+]
 
 const ShoppingCart = () => {
     // initial Shopping List is empty
@@ -222,6 +222,7 @@ const ShoppingCart = () => {
                         <label>Item:</label>
                         <input
                             type="text"
+                            placeholder="Banana"
                             value={addItem}
                             onChange={(e) => {
                                 setAddItem(e.target.value)

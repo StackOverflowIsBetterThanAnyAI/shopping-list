@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import './ImageRow.css'
 
 type ImageRowProps = {
@@ -9,7 +9,13 @@ const ImageRow: FC<ImageRowProps> = ({ images }) => {
     return (
         <div className="image-row">
             {images.map((imageUrl) => (
-                <img key={imageUrl} src={imageUrl} alt="" className="image" />
+                <img
+                    key={imageUrl}
+                    src={imageUrl}
+                    alt=""
+                    className="image"
+                    loading="lazy"
+                />
             ))}
         </div>
     )
