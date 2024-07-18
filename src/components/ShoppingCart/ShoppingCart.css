@@ -101,6 +101,10 @@
     display: grid;
 }
 
+.shoppingList-gridItem-striped {
+    background-color: rgb(162, 162, 162);
+}
+
 .shoppingList-addItemGrid {
     display: grid;
 }

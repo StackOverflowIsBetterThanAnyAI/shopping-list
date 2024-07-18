@@ -177,6 +177,10 @@ const ShoppingCart = () => {
                                     index === articles.length - 1
                                         ? ' borderRadiusBottom'
                                         : ''
+                                }${
+                                    index % 2 === 1
+                                        ? ' shoppingList-gridItem-striped'
+                                        : ''
                                 }`}
                             >
                                 <span
