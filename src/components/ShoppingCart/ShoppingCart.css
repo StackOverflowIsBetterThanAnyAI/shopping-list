@@ -5,6 +5,7 @@
             5,
             min(18%, 75px) 10% min(12%, 50px) min(32%, 400px) 22%
         );
+        gap: 1vw;
     }
 
     .shoppingList-gridItem {
@@ -13,17 +14,8 @@
         padding: 0.125vw 1vw;
     }
 
-    .shoppingList {
-        margin-bottom: 2vw;
-    }
-
     .shoppingList-gridContainer {
         padding: 1vw;
-    }
-
-    .shoppingList-addItemGrid {
-        gap: 1vw;
-        padding: 0.125vw;
     }
 
     .shoppingList-addItemGridHeader {
@@ -39,6 +31,7 @@
             5,
             min(21%, 75px) 13% min(13%, 50px) 35% 30%
         );
+        gap: 1vw;
     }
 
     .shoppingList-gridItem {
@@ -47,17 +40,8 @@
         padding: 0.125vw 1vw;
     }
 
-    .shoppingList {
-        margin-bottom: 2vw;
-    }
-
     .shoppingList-gridContainer {
         padding: 1vw;
-    }
-
-    .shoppingList-addItemGrid {
-        gap: 1vw;
-        padding: 0.125vw;
     }
 
     .shoppingList-addItemGridHeader {
@@ -68,27 +52,37 @@
 
 /* desktop width */
 @media only screen and (min-width: 1020px) {
+    .borderRadiusBottom {
+        border-radius: 0 0 8px 8px;
+    }
+
+    .borderRadiusFull {
+        border-radius: 8px;
+    }
+
+    .borderRadiusTop {
+        border-radius: 8px 8px 0 0;
+    }
+
+    .shoppingList {
+        border-radius: 8px;
+        margin-top: clamp(24px, 4vh, 64px);
+    }
+
     .shoppingList-addItemGrid {
         grid-template-columns: repeat(5, 80px 125px 40px 160px 125px);
+        gap: 16px;
+        margin-top: 8px;
     }
 
     .shoppingList-gridItem {
         grid-template-columns: repeat(4, 80px 720px 80px 60px);
         gap: 10px;
-        padding: 2px 10px;
-    }
-
-    .shoppingList {
-        margin-bottom: 32px;
+        padding: 4px 10px;
     }
 
     .shoppingList-gridContainer {
         padding: 16px;
-    }
-
-    .shoppingList-addItemGrid {
-        gap: 16px;
-        padding: 0.125vw;
     }
 
     .shoppingList-addItemGridHeader {

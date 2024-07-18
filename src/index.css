@@ -4,15 +4,14 @@
     border: none;
 }
 
+*:focus-visible {
+    outline: 4px solid rgb(250, 204, 21);
+}
+
 /* mobile width */
 @media only screen {
     * {
         font-size: min(3.8vw, 16px);
-    }
-
-    *:focus-visible {
-        outline: 4px solid rgb(255, 240, 26);
-        border-color: rgb(241, 241, 241);
     }
 
     h1 {
@@ -37,11 +36,6 @@
         font-size: min(2w, 20px);
     }
 
-    *:focus-visible {
-        outline: 4px solid rgb(255, 240, 26);
-        border-color: rgb(241, 241, 241);
-    }
-
     h1 {
         font-size: min(2.7vw, 28px);
         margin: 2vw 0 1vw 0;
@@ -61,12 +55,7 @@
 /* desktop width */
 @media only screen and (min-width: 1020px) {
     * {
-        font-size: 20px;
-    }
-
-    *:focus-visible {
-        outline: 4px solid rgb(255, 240, 26);
-        border-color: rgb(241, 241, 241);
+        font-size: 18px;
     }
 
     h1 {
@@ -76,11 +65,15 @@
     }
 
     input {
-        font-size: 18px;
+        font-size: 16px;
         padding: 0 4px;
     }
 
     button {
+        font-size: 16px;
+    }
+
+    button.add {
         font-size: 18px;
     }
 }
@@ -97,7 +90,7 @@ button {
     font-family: 'Poppins-Regular';
     color: rgb(33, 33, 33);
     background-color: rgb(250, 204, 21);
-    border-radius: 4px;
+    border-radius: 8px;
     border-width: 2px;
 }
 
@@ -111,31 +104,35 @@ button:active {
     cursor: pointer;
 }
 
+button.add:focus-visible {
+    outline: 4px solid rgb(207, 207, 207);
+}
+
 button.edit {
-    color: rgb(33, 33, 33);
-    background-color: rgb(206, 206, 206);
+    color: rgb(255, 255, 255);
+    background-color: rgb(109, 107, 107);
 }
 
 button.edit:hover {
-    background-color: rgb(156, 156, 156);
+    background-color: rgb(148, 145, 145);
 }
 
 button.edit:active {
     color: rgb(234, 234, 234);
-    background-color: rgb(106, 106, 106);
+    background-color: rgb(167, 164, 164);
 }
 
 button.delete {
     color: rgb(246, 246, 246);
-    background-color: rgb(185, 0, 0);
+    background-color: rgb(26, 25, 25);
 }
 
 button.delete:hover {
-    background-color: rgb(185, 41, 41);
+    background-color: rgb(49, 47, 47);
 }
 
 button.delete:active {
-    background-color: rgb(185, 82, 82);
+    background-color: rgb(69, 67, 67);
 }
 
 h1 {
@@ -154,8 +151,8 @@ html {
 input {
     font-family: 'Poppins-Regular';
     color: rgb(12, 12, 12);
-    background-color: rgb(178, 214, 231);
-    border-radius: 4px;
+    background-color: rgb(199, 216, 224);
+    border-radius: 8px;
     border-width: 1px;
 }
 
@@ -168,6 +165,7 @@ li {
     background-color: rgb(234, 234, 234);
     padding: 16px;
     margin: 16px;
+    border-radius: 8px;
 }
 
 @font-face {

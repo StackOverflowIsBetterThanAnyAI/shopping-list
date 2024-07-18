@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
-import { useRef, useState } from 'react'
+import { createContext, useEffect, useRef, useState } from 'react'
 import ImageRow from '../ImageRow/ImageRow'
 
 import './ShoppingCart.css'
@@ -50,6 +50,10 @@ const imageUrls: string[] = [
     tacoImage,
     teaImage,
 ]
+
+export const ContextArticles = createContext<
+    [CartItem[], Dispatch<SetStateAction<CartItem[]>>] | undefined
+>(undefined)
 
 const ShoppingCart = () => {
     // initial Shopping List is empty
@@ -124,128 +128,171 @@ const ShoppingCart = () => {
         setisValidItem(true)
     }
 
+    useEffect(() => {
+        const handleFocusTrap = (e: KeyboardEvent) => {
+            const focusableButtons = Array.from(
+                document.querySelectorAll<HTMLElement>('button, input')
+            ).filter((item) => !item.hasAttribute('disabled'))
+            const firstButton = focusableButtons[0]
+            const lastButton = focusableButtons[focusableButtons.length - 1]
+
+            if (
+                e.key === 'Tab' &&
+                !e.shiftKey &&
+                document.activeElement === lastButton
+            ) {
+                e.preventDefault()
+                firstButton?.focus()
+            }
+
+            if (
+                e.key === 'Tab' &&
+                e.shiftKey &&
+                document.activeElement === firstButton
+            ) {
+                e.preventDefault()
+                lastButton?.focus()
+            }
+        }
+
+        document.addEventListener('keydown', handleFocusTrap)
+
+        return () => {
+            document.removeEventListener('keydown', handleFocusTrap)
+        }
+    }, [])
+
     return (
         <>
-            <div className="shoppingList">
-                <h1>Shopping List</h1>
-                <ImageRow images={imageUrls} />
-                <ul className="shoppingList-gridContainer">
-                    <GridHeader />
-                    {articles.map((article) => (
-                        <li key={article.id} className="shoppingList-gridItem">
-                            <span
-                                className="textAlignCenter"
-                                onClick={() => {
-                                    let newAmount = parseInt(
-                                        prompt(
-                                            'Enter the new amount or cancel to leave it the same:',
-                                            article.amount.toString()
-                                        ) || article.amount.toString()
-                                    )
-                                    if (isNaN(newAmount) || newAmount < 1)
-                                        newAmount = article.amount
-                                    handleEdit(
-                                        article.id,
-                                        newAmount,
-                                        article.articleName
-                                    )
-                                }}
+            <ContextArticles.Provider value={[articles, setArticles]}>
+                <div className="shoppingList">
+                    <h1>Shopping List</h1>
+                    <ImageRow images={imageUrls} />
+                    <ul className="shoppingList-gridContainer">
+                        <GridHeader />
+                        {articles.map((article, index) => (
+                            <li
+                                key={article.id}
+                                className={`shoppingList-gridItem${
+                                    index === articles.length - 1
+                                        ? ' borderRadiusBottom'
+                                        : ''
+                                }`}
                             >
-                                {article.amount}
-                            </span>
-                            <span
-                                onClick={() => {
-                                    const newArticle =
-                                        prompt(
-                                            'Enter a new article name or cancel to leave it the same:',
+                                <span
+                                    className="textAlignCenter"
+                                    onClick={() => {
+                                        let newAmount = parseInt(
+                                            prompt(
+                                                'Enter the new amount or cancel to leave it the same:',
+                                                article.amount.toString()
+                                            ) || article.amount.toString()
+                                        )
+                                        if (isNaN(newAmount) || newAmount < 1)
+                                            newAmount = article.amount
+                                        handleEdit(
+                                            article.id,
+                                            newAmount,
                                             article.articleName
-                                        ) || article.articleName
-                                    handleEdit(
-                                        article.id,
-                                        article.amount,
-                                        newArticle
-                                    )
-                                }}
-                            >
-                                {article.articleName}
-                            </span>
-                            <button
-                                className="delete"
-                                type="button"
-                                onClick={() => handleRemove(article.id)}
-                            >
-                                X
-                            </button>
-                            <button
-                                className="edit"
-                                type="button"
-                                onClick={() => {
-                                    let newAmount = parseInt(
-                                        prompt(
-                                            'Enter the new amount or cancel to leave it the same:',
-                                            article.amount.toString()
-                                        ) || article.amount.toString()
-                                    )
-                                    if (isNaN(newAmount) || newAmount < 1)
-                                        newAmount = article.amount
-                                    const newArticle =
-                                        prompt(
-                                            'Enter a new article name or cancel to leave it the same:',
-                                            article.articleName
-                                        ) || article.articleName
-                                    handleEdit(
-                                        article.id,
-                                        newAmount,
-                                        newArticle
-                                    )
-                                }}
-                            >
-                                Edit
-                            </button>
-                        </li>
-                    ))}
-                </ul>
+                                        )
+                                    }}
+                                >
+                                    {article.amount}
+                                </span>
+                                <span
+                                    onClick={() => {
+                                        const newArticle =
+                                            prompt(
+                                                'Enter a new article name or cancel to leave it the same:',
+                                                article.articleName
+                                            ) || article.articleName
+                                        handleEdit(
+                                            article.id,
+                                            article.amount,
+                                            newArticle
+                                        )
+                                    }}
+                                >
+                                    {article.articleName}
+                                </span>
+                                <button
+                                    className="delete"
+                                    type="button"
+                                    onClick={() => handleRemove(article.id)}
+                                >
+                                    X
+                                </button>
+                                <button
+                                    className="edit"
+                                    type="button"
+                                    onClick={() => {
+                                        let newAmount = parseInt(
+                                            prompt(
+                                                'Enter the new amount or cancel to leave it the same:',
+                                                article.amount.toString()
+                                            ) || article.amount.toString()
+                                        )
+                                        if (isNaN(newAmount) || newAmount < 1)
+                                            newAmount = article.amount
+                                        const newArticle =
+                                            prompt(
+                                                'Enter a new article name or cancel to leave it the same:',
+                                                article.articleName
+                                            ) || article.articleName
+                                        handleEdit(
+                                            article.id,
+                                            newAmount,
+                                            newArticle
+                                        )
+                                    }}
+                                >
+                                    +/-
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
 
-                <div className="shoppingList-addItemGridHeader">
-                    Add A New Item To The List:
-                    <div className="shoppingList-addItemGrid">
-                        <label>Amount:</label>
-                        <input
-                            type="number"
-                            value={addAmount}
-                            autoFocus
-                            onChange={(e) =>
-                                setAddAmount(e.target.valueAsNumber)
-                            }
-                            min={1}
+                    <div className="shoppingList-addItemGridHeader">
+                        Add A New Item To The List:
+                        <div className="shoppingList-addItemGrid">
+                            <label>Amount:</label>
+                            <input
+                                type="number"
+                                value={addAmount}
+                                autoFocus
+                                onChange={(e) =>
+                                    setAddAmount(e.target.valueAsNumber)
+                                }
+                                min={1}
+                            />
+                            <label>Item:</label>
+                            <input
+                                type="text"
+                                placeholder="Banana"
+                                value={addItem}
+                                onChange={(e) => {
+                                    setAddItem(e.target.value)
+                                }}
+                                spellCheck={false}
+                                ref={inputRef}
+                            />
+                            <button
+                                className="add"
+                                type="button"
+                                onClick={() => {
+                                    handleClick(addAmount, addItem)
+                                }}
+                            >
+                                Add Item
+                            </button>
+                        </div>
+                        <ShoppingCartError
+                            isValidAmount={isValidAmount}
+                            isValidItem={isValidItem}
                         />
-                        <label>Item:</label>
-                        <input
-                            type="text"
-                            placeholder="Banana"
-                            value={addItem}
-                            onChange={(e) => {
-                                setAddItem(e.target.value)
-                            }}
-                            spellCheck={false}
-                            ref={inputRef}
-                        />
-                        <button
-                            className="add"
-                            type="button"
-                            onClick={() => {
-                                handleClick(addAmount, addItem)
-                            }}
-                        >
-                            Add Item
-                        </button>
                     </div>
-                    <ShoppingCartError
-                        isValidAmount={isValidAmount}
-                        isValidItem={isValidItem}
-                    />
                 </div>
-            </div>
+            </ContextArticles.Provider>
         </>
     )
 }

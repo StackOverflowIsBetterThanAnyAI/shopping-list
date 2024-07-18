@@ -19,6 +19,7 @@
     .image-row {
         margin: 0 16px;
         padding: 8px;
+        border-radius: 8px;
     }
 }
 
