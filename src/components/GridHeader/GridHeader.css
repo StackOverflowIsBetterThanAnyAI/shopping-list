@@ -1,18 +1,36 @@
 /* mobile width */
-@media only screen {
+@media only screen and (max-width: 768px) {
     .shoppingList-gridItem-header {
         grid-template-columns: repeat(4, 15% 45% 20% 15%);
-        gap: 1vw;
-        padding: 0.125vw 1vw;
+        gap: min(1.25vw, 4px);
+        padding: min(2.5vw, 8px);
+    }
+
+    .shoppingList-gridItem-header span {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .shoppingList-gridItem span {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .shoppingList-gridItem {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 }
 
 /* tablet width */
 @media only screen and (min-width: 768px) {
     .shoppingList-gridItem-header {
-        grid-template-columns: repeat(4, 10% 60% 15% 10%);
-        gap: 1vw;
-        padding: 0.125vw 1vw;
+        grid-template-columns: repeat(4, 10% 61% 12% 14%);
+        gap: min(1vw, 8px);
+        padding: min(0.5vw, 4px) min(1vw, 8px);
     }
 }
 
@@ -21,7 +39,7 @@
     .shoppingList-gridItem-header {
         grid-template-columns: repeat(4, 80px 720px 80px 60px);
         gap: 10px;
-        padding: 2px 10px;
+        padding: 2px 8px;
     }
 }
 

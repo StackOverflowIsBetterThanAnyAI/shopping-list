@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     border: none;
+    box-sizing: border-box;
 }
 
 *:focus-visible {
@@ -9,46 +10,67 @@
 }
 
 /* mobile width */
-@media only screen {
+@media only screen and (max-width: 768px) {
     * {
-        font-size: min(3.8vw, 16px);
-    }
-
-    h1 {
-        font-size: min(5vw, 24px);
-        margin: 0 0 1vw 0;
-        padding-top: 1vw;
-    }
-
-    input {
-        font-size: min(3.6vw, 15px);
-        padding: 0 0.25vw;
+        font-size: min(5vw, 16px);
     }
 
     button {
-        font-size: min(3.2vw, 14px);
+        font-size: min(5vw, 14px);
+        border-radius: min(2.5vw, 8px);
+    }
+
+    button.add {
+        padding: min(1.25vw, 4px);
+        width: min(256px, 100%);
+    }
+
+    button.edit,
+    button.delete {
+        width: min(12vw, 64px);
+    }
+
+    h1 {
+        font-size: clamp(16px, 7vw, 24px);
+        margin-bottom: clamp(8px, 2.5vw, 16px);
+        padding-top: clamp(20px, 7vw, 28px);
+    }
+
+    input {
+        font-size: min(4.5vw, 14px);
+        padding: min(0.625vw, 2px) max(1.25vw, 4px);
+    }
+
+    span {
+        font-size: min(4.5vw, 14px);
     }
 }
 
 /* tablet width */
 @media only screen and (min-width: 768px) {
     * {
-        font-size: min(2w, 20px);
-    }
-
-    h1 {
-        font-size: min(2.7vw, 28px);
-        margin: 2vw 0 1vw 0;
-        padding-top: 1vw;
-    }
-
-    input {
-        font-size: min(1.8vw, 18px);
-        padding: 0 0.25vw;
+        font-size: min(2.25vw, 18px);
     }
 
     button {
-        font-size: min(1.6vw, 16px);
+        font-size: min(2vw, 16px);
+        border-radius: 8px;
+    }
+
+    button.edit,
+    button.delete {
+        width: max(8vw, 64px);
+    }
+
+    h1 {
+        font-size: min(3.125vw, 28px);
+        margin-top: min(4vw, 32px);
+        padding: min(2vw, 16px);
+    }
+
+    input {
+        font-size: min(2.25vw, 18px);
+        padding: 0 0.25vw;
     }
 }
 
@@ -56,6 +78,23 @@
 @media only screen and (min-width: 1020px) {
     * {
         font-size: 18px;
+    }
+
+    button {
+        font-size: 16px;
+        border-radius: 8px;
+    }
+
+    button.add {
+        font-size: 18px;
+    }
+
+    button.edit {
+        width: 60px;
+    }
+
+    button.delete {
+        width: 80px;
     }
 
     h1 {
@@ -67,14 +106,6 @@
     input {
         font-size: 16px;
         padding: 0 4px;
-    }
-
-    button {
-        font-size: 16px;
-    }
-
-    button.add {
-        font-size: 18px;
     }
 }
 
@@ -90,7 +121,6 @@ button {
     font-family: 'Poppins-Regular';
     color: rgb(33, 33, 33);
     background-color: rgb(250, 204, 21);
-    border-radius: 8px;
     border-width: 2px;
 }
 
@@ -111,6 +141,7 @@ button.add:focus-visible {
 button.edit {
     color: rgb(255, 255, 255);
     background-color: rgb(109, 107, 107);
+    margin: auto;
 }
 
 button.edit:hover {
@@ -125,6 +156,7 @@ button.edit:active {
 button.delete {
     color: rgb(246, 246, 246);
     background-color: rgb(26, 25, 25);
+    margin: auto;
 }
 
 button.delete:hover {
@@ -153,7 +185,6 @@ input {
     color: rgb(12, 12, 12);
     background-color: rgb(199, 216, 224);
     border-radius: 8px;
-    border-width: 1px;
 }
 
 li {

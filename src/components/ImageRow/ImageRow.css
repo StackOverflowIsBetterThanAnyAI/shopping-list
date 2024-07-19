@@ -1,16 +1,29 @@
 /* mobile width */
-@media only screen {
+@media only screen and (max-width: 768px) {
     .image-row {
-        margin: 0 1vw;
-        padding: 0.5vw;
+        margin: 0 max(2.5vw, 8px);
+        padding: max(1.25vw, 4px) 0;
+        overflow: hidden;
+    }
+
+    .image:nth-child(n + 11) {
+        display: none;
+    }
+
+    .image {
+        max-width: max(10%, 24px);
     }
 }
 
 /* tablet width */
 @media only screen and (min-width: 768px) {
     .image-row {
-        margin: 0 1vw;
-        padding: 0.5vw;
+        margin: 0 min(2vw, 16px) min(2vw, 16px) min(2vw, 16px);
+        padding: min(1vw, 8px);
+    }
+
+    .image {
+        max-width: 6%;
     }
 }
 
@@ -19,16 +32,16 @@
     .image-row {
         margin: 0 16px;
         padding: 8px;
-        border-radius: 8px;
     }
-}
 
-.image {
-    max-width: 6%;
+    .image {
+        max-width: 6%;
+    }
 }
 
 .image-row {
     display: flex;
     background-color: rgb(207, 207, 207);
     justify-content: space-between;
+    border-radius: 8px;
 }

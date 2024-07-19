@@ -24,6 +24,7 @@ import teaImage from '../../images/tea.png'
 
 import GridHeader from '../GridHeader/GridHeader'
 import ShoppingCartError from './ShoppingCartError'
+import { useScreenWidth } from '../../hooks/useScreenWidth'
 
 type CartItem = {
     id: number
@@ -40,10 +41,10 @@ const imageUrls: string[] = [
     cocktailImage,
     coffeeImage,
     croissantImage,
-    icecreamImage,
+    melonImage,
     jamImage,
     mcdonaldsImage,
-    melonImage,
+    icecreamImage,
     muffinImage,
     pancakeImage,
     pizzaImage,
@@ -70,6 +71,9 @@ const ShoppingCart = () => {
 
     // update focus for input
     const inputRef = useRef<HTMLInputElement | null>(null)
+
+    // detects if the current viewport is mobile width
+    const screenWidth = useScreenWidth()
 
     // remove item from Shopping List
     const handleRemove = (idToRemove: number) => {
@@ -168,6 +172,53 @@ const ShoppingCart = () => {
                 <div className="shoppingList">
                     <h1>Shopping List</h1>
                     <ImageRow images={imageUrls} />
+                    {screenWidth === 'MOBILE' && (
+                        <div className="shoppingList-addItemGridHeader">
+                            <div className="shoppingList-addItemGrid">
+                                <div className="shoppingList-addItemGrid-description">
+                                    Add A New Item To The List:
+                                </div>
+                                <div className="gridRow">
+                                    <label>Amount:</label>
+                                    <input
+                                        type="number"
+                                        value={addAmount}
+                                        autoFocus
+                                        onChange={(e) =>
+                                            setAddAmount(e.target.valueAsNumber)
+                                        }
+                                        min={1}
+                                    />
+                                </div>
+                                <div className="gridRow">
+                                    <label>Item:</label>
+                                    <input
+                                        type="text"
+                                        placeholder="Banana"
+                                        value={addItem}
+                                        onChange={(e) => {
+                                            setAddItem(e.target.value)
+                                        }}
+                                        spellCheck={false}
+                                        ref={inputRef}
+                                    />
+                                </div>
+                                <button
+                                    className="add"
+                                    type="button"
+                                    onClick={() => {
+                                        handleClick(addAmount, addItem)
+                                    }}
+                                >
+                                    Add Item
+                                </button>
+                            </div>
+                            <ShoppingCartError
+                                isValidAmount={isValidAmount}
+                                isValidItem={isValidItem}
+                            />
+                        </div>
+                    )}
                     <ul className="shoppingList-gridContainer">
                         <GridHeader />
                         {articles.map((article, index) => (
@@ -255,46 +306,49 @@ const ShoppingCart = () => {
                             </li>
                         ))}
                     </ul>
-
-                    <div className="shoppingList-addItemGridHeader">
-                        Add A New Item To The List:
-                        <div className="shoppingList-addItemGrid">
-                            <label>Amount:</label>
-                            <input
-                                type="number"
-                                value={addAmount}
-                                autoFocus
-                                onChange={(e) =>
-                                    setAddAmount(e.target.valueAsNumber)
-                                }
-                                min={1}
+                    {screenWidth === 'NOT_MOBILE' && (
+                        <div className="shoppingList-addItemGridHeader">
+                            <div className="shoppingList-addItemGrid-description">
+                                Add A New Item To The List:
+                            </div>
+                            <div className="shoppingList-addItemGrid">
+                                <label>Amount:</label>
+                                <input
+                                    type="number"
+                                    value={addAmount}
+                                    autoFocus
+                                    onChange={(e) =>
+                                        setAddAmount(e.target.valueAsNumber)
+                                    }
+                                    min={1}
+                                />
+                                <label>Item:</label>
+                                <input
+                                    type="text"
+                                    placeholder="Banana"
+                                    value={addItem}
+                                    onChange={(e) => {
+                                        setAddItem(e.target.value)
+                                    }}
+                                    spellCheck={false}
+                                    ref={inputRef}
+                                />
+                                <button
+                                    className="add"
+                                    type="button"
+                                    onClick={() => {
+                                        handleClick(addAmount, addItem)
+                                    }}
+                                >
+                                    Add Item
+                                </button>
+                            </div>
+                            <ShoppingCartError
+                                isValidAmount={isValidAmount}
+                                isValidItem={isValidItem}
                             />
-                            <label>Item:</label>
-                            <input
-                                type="text"
-                                placeholder="Banana"
-                                value={addItem}
-                                onChange={(e) => {
-                                    setAddItem(e.target.value)
-                                }}
-                                spellCheck={false}
-                                ref={inputRef}
-                            />
-                            <button
-                                className="add"
-                                type="button"
-                                onClick={() => {
-                                    handleClick(addAmount, addItem)
-                                }}
-                            >
-                                Add Item
-                            </button>
                         </div>
-                        <ShoppingCartError
-                            isValidAmount={isValidAmount}
-                            isValidItem={isValidItem}
-                        />
-                    </div>
+                    )}
                 </div>
             </ContextArticles.Provider>
         </>
