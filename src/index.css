@@ -135,7 +135,7 @@ button:active {
 }
 
 button.add:focus-visible {
-    outline: 4px solid rgb(207, 207, 207);
+    outline: 4px solid rgb(230, 228, 228);
 }
 
 button.edit {
@@ -183,7 +183,7 @@ html {
 input {
     font-family: 'Poppins-Regular';
     color: rgb(12, 12, 12);
-    background-color: rgb(199, 216, 224);
+    background-color: rgb(217, 224, 228);
     border-radius: 8px;
 }
 
