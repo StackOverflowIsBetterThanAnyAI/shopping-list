@@ -10,7 +10,7 @@
     }
 
     .image {
-        max-width: max(10%, 24px);
+        max-width: max(12.5%, 24px);
     }
 }
 
