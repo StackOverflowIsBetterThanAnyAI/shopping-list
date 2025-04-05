@@ -13,6 +13,7 @@
         "react-scripts": "5.0.1",
         "typescript": "^4.4.2"
     },
+    "prettier": "prettier-es5",
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
@@ -38,6 +39,6 @@
     },
     "devDependencies": {
         "gh-pages": "^6.1.1",
-        "prettier": "^3.0.2"
+        "prettier-es5": "^0.0.4"
     }
 }
