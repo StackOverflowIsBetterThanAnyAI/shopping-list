@@ -92,8 +92,9 @@ const ShoppingCart = () => {
     }
 
     const handleClick = (addAmount: number, addItem: string): void => {
-        if (addItem.length && addAmount) addItemToList(addAmount, addItem)
-        else if (!addItem.length && !addAmount) {
+        if (addItem.length && addAmount) {
+            addItemToList(addAmount, addItem)
+        } else if (!addItem.length && !addAmount) {
             setisValidItem(false)
             setisValidAmount(false)
         } else if (!addAmount) {
