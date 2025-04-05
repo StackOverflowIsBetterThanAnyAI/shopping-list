@@ -57,11 +57,9 @@ export const ContextArticles = createContext<
 >(undefined)
 
 const ShoppingCart = () => {
-    // initial Shopping List is empty
     const [articles, setArticles] = useState<CartItem[]>(initialCartItems)
     let upcomingId: number = articles.length
 
-    // state variables for adding new items to the Shopping List
     const [addAmount, setAddAmount] = useState<number>(1)
     const [addItem, setAddItem] = useState<string>('')
 
@@ -75,13 +73,11 @@ const ShoppingCart = () => {
     // detects if the current viewport is mobile width
     const screenWidth = useScreenWidth()
 
-    // remove item from Shopping List
     const handleRemove = (idToRemove: number) => {
         setArticles(articles.filter((article) => article.id !== idToRemove))
         upcomingId--
     }
 
-    // edit item in Shopping List
     const handleEdit = (
         idToEdit: number,
         newAmount: number,
@@ -109,7 +105,6 @@ const ShoppingCart = () => {
         }
     }
 
-    // add new item to Shopping List
     const addItemToList = (amountToAdd: number, articleToAdd: string): void => {
         const insertAt: number = upcomingId
         const nextArticle = [

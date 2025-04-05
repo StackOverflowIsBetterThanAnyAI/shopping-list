@@ -9,7 +9,6 @@
     outline: 4px solid rgb(250, 204, 21);
 }
 
-/* mobile width */
 @media only screen and (max-width: 768px) {
     * {
         font-size: min(5vw, 16px);
@@ -46,7 +45,6 @@
     }
 }
 
-/* tablet width */
 @media only screen and (min-width: 768px) {
     * {
         font-size: min(2.25vw, 18px);
@@ -74,7 +72,6 @@
     }
 }
 
-/* desktop width */
 @media only screen and (min-width: 1020px) {
     * {
         font-size: 18px;

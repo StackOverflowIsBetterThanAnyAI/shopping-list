@@ -1,4 +1,3 @@
-/* mobile width */
 @media only screen and (max-width: 768px) {
     .gridRow {
         display: grid;
@@ -40,7 +39,6 @@
     }
 }
 
-/* tablet width */
 @media only screen and (min-width: 768px) {
     .shoppingList-addItemGrid {
         width: 100%;
@@ -71,7 +69,6 @@
     }
 }
 
-/* desktop width */
 @media only screen and (min-width: 1020px) {
     .shoppingList {
         border-radius: 8px;

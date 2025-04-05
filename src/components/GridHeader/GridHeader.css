@@ -1,4 +1,3 @@
-/* mobile width */
 @media only screen and (max-width: 768px) {
     .shoppingList-gridItem-header {
         grid-template-columns: repeat(4, 15% 45% 20% 15%);
@@ -25,7 +24,6 @@
     }
 }
 
-/* tablet width */
 @media only screen and (min-width: 768px) {
     .shoppingList-gridItem-header {
         grid-template-columns: repeat(4, 10% 61% 12% 14%);
@@ -34,7 +32,6 @@
     }
 }
 
-/* desktop width */
 @media only screen and (min-width: 1020px) {
     .shoppingList-gridItem-header {
         grid-template-columns: repeat(4, 80px 720px 80px 60px);
