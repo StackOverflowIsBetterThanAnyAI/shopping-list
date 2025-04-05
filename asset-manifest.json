@@ -1,31 +1,16 @@
 {
   "files": {
-    "main.css": "/shopping-list/static/css/main.c8f1dba1.css",
-    "main.js": "/shopping-list/static/js/main.a2ce0441.js",
+    "main.css": "/shopping-list/static/css/main.5916415e.css",
+    "main.js": "/shopping-list/static/js/main.c701e75b.js",
     "static/media/Poppins-Regular.ttf": "/shopping-list/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
     "static/media/Poppins-Medium.ttf": "/shopping-list/static/media/Poppins-Medium.673ed42382ab264e0bf5.ttf",
     "static/media/Poppins-Bold.ttf": "/shopping-list/static/media/Poppins-Bold.cdb29a5d7ccf57ff05a3.ttf",
-    "static/media/jam.png": "/shopping-list/static/media/jam.4cd3a6f8dc59edcf5209.png",
-    "static/media/pizza.png": "/shopping-list/static/media/pizza.183fc809438ea705f280.png",
-    "static/media/mcdonalds.png": "/shopping-list/static/media/mcdonalds.1da03d943ec18e480026.png",
-    "static/media/taco.png": "/shopping-list/static/media/taco.25708c38f758451f0459.png",
-    "static/media/cocktail.png": "/shopping-list/static/media/cocktail.2b44a2462af9c4788673.png",
-    "static/media/pancake.png": "/shopping-list/static/media/pancake.ad0dfa0a88ee1c219caa.png",
-    "static/media/melon.png": "/shopping-list/static/media/melon.66a65bc2cb0ada125d93.png",
-    "static/media/cherry.png": "/shopping-list/static/media/cherry.9dc58865f10105256fcb.png",
-    "static/media/muffin.png": "/shopping-list/static/media/muffin.c3c4485b0f86c54faf0c.png",
-    "static/media/croissant.png": "/shopping-list/static/media/croissant.f41a2ec77c4954e3ec9b.png",
-    "static/media/icecream.png": "/shopping-list/static/media/icecream.631805d1dcb98143cc58.png",
-    "static/media/chicken.png": "/shopping-list/static/media/chicken.83f25e5273c43b2cf95f.png",
-    "static/media/apple.png": "/shopping-list/static/media/apple.0bf7448a4ecc26225b33.png",
-    "static/media/tea.png": "/shopping-list/static/media/tea.ce68a7468f337e054398.png",
-    "static/media/coffee.png": "/shopping-list/static/media/coffee.01dbf35ca4b2007a5814.png",
     "index.html": "/shopping-list/index.html",
-    "main.c8f1dba1.css.map": "/shopping-list/static/css/main.c8f1dba1.css.map",
-    "main.a2ce0441.js.map": "/shopping-list/static/js/main.a2ce0441.js.map"
+    "main.5916415e.css.map": "/shopping-list/static/css/main.5916415e.css.map",
+    "main.c701e75b.js.map": "/shopping-list/static/js/main.c701e75b.js.map"
   },
   "entrypoints": [
-    "static/css/main.c8f1dba1.css",
-    "static/js/main.a2ce0441.js"
+    "static/css/main.5916415e.css",
+    "static/js/main.c701e75b.js"
   ]
 }
