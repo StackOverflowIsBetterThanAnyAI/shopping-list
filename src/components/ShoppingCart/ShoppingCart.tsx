@@ -24,13 +24,11 @@ import teaImage from '../../images/tea.png'
 
 import GridHeader from '../GridHeader/GridHeader'
 import ShoppingCartError from './ShoppingCartError'
+import { CartItem } from '../types/CartItem'
+import { loadItemsFromStorage } from '../../utils/loadItemsFromStorage'
+import { resetStorageItems } from '../../utils/resetStorageItems'
+import { setItemInStorage } from '../../utils/setItemInStorage'
 import { useScreenWidth } from '../../hooks/useScreenWidth'
-
-type CartItem = {
-    id: number
-    amount: number
-    articleName: string
-}
 
 const initialCartItems: CartItem[] = []
 
@@ -58,7 +56,7 @@ export const ContextArticles = createContext<
 
 const ShoppingCart = () => {
     const [articles, setArticles] = useState<CartItem[]>(initialCartItems)
-    let upcomingId: number = articles.length
+    const [upcomingId, setUpcomingId] = useState<number>(articles.length)
 
     const [addAmount, setAddAmount] = useState<number>(1)
     const [addItem, setAddItem] = useState<string>('')
@@ -74,8 +72,12 @@ const ShoppingCart = () => {
     const screenWidth = useScreenWidth()
 
     const handleRemove = (idToRemove: number) => {
-        setArticles(articles.filter((article) => article.id !== idToRemove))
-        upcomingId--
+        const updatedArticles = articles
+            .filter((article) => article.id !== idToRemove)
+            .map((article, index) => ({ ...article, id: index }))
+        setArticles(updatedArticles)
+        resetStorageItems(updatedArticles)
+        setUpcomingId((prev) => prev - 1)
     }
 
     const handleEdit = (
@@ -89,6 +91,7 @@ const ShoppingCart = () => {
                 : article
         )
         setArticles(updatedArticles)
+        resetStorageItems(updatedArticles)
     }
 
     const handleClick = (addAmount: number, addItem: string): void => {
@@ -111,13 +114,14 @@ const ShoppingCart = () => {
         const nextArticle = [
             ...articles.slice(0, insertAt),
             {
-                id: upcomingId++,
+                id: setUpcomingId((prev) => prev + 1),
                 amount: amountToAdd,
                 articleName: articleToAdd,
                 bought: false,
             },
             ...articles.slice(insertAt),
         ]
+        setItemInStorage(insertAt, amountToAdd, articleToAdd)
         setArticles(nextArticle)
         setAddItem('')
         setAddAmount(1)
@@ -127,6 +131,12 @@ const ShoppingCart = () => {
         setisValidAmount(true)
         setisValidItem(true)
     }
+
+    useEffect(() => {
+        const storedItems = loadItemsFromStorage()
+        setArticles(storedItems)
+        setUpcomingId(storedItems.length)
+    }, [])
 
     useEffect(() => {
         const handleFocusTrap = (e: KeyboardEvent) => {
