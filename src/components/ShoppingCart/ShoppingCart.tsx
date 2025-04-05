@@ -294,6 +294,7 @@ const ShoppingCart = () => {
                                 </span>
                                 <button
                                     className="delete"
+                                    data-testid={`delete-${article.id}`}
                                     type="button"
                                     onClick={() => handleRemove(article.id)}
                                 >
@@ -301,6 +302,7 @@ const ShoppingCart = () => {
                                 </button>
                                 <button
                                     className="edit"
+                                    data-testid={`edit-${article.id}`}
                                     type="button"
                                     onClick={() => {
                                         let newAmount = parseInt(
