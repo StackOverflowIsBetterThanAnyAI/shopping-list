@@ -37,7 +37,7 @@
 
     input {
         font-size: min(4.5vw, 14px);
-        padding: min(0.625vw, 2px) max(1.25vw, 4px);
+        padding: min(0.625vw, 2px) max(2vw, 6px);
     }
 
     span {
