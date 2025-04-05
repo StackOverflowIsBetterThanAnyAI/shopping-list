@@ -68,7 +68,7 @@
 
     input {
         font-size: min(2.25vw, 18px);
-        padding: 0 0.25vw;
+        padding: 0 min(0.375vw, 4px);
     }
 }
 
