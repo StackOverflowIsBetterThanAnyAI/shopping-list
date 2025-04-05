@@ -1,7 +1,14 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
-import { createContext, useEffect, useRef, useState } from 'react'
+import {
+    createContext,
+    Dispatch,
+    SetStateAction,
+    useEffect,
+    useRef,
+    useState,
+} from 'react'
 import ImageRow from '../ImageRow/ImageRow'
 
 import './ShoppingCart.css'
@@ -24,7 +31,7 @@ import teaImage from '../../images/tea.png'
 
 import GridHeader from '../GridHeader/GridHeader'
 import ShoppingCartError from './ShoppingCartError'
-import { CartItem } from '../types/CartItem'
+import { CartItem } from '../../types/CartItem'
 import { loadItemsFromStorage } from '../../utils/loadItemsFromStorage'
 import { resetStorageItems } from '../../utils/resetStorageItems'
 import { setItemInStorage } from '../../utils/setItemInStorage'
@@ -111,10 +118,13 @@ const ShoppingCart = () => {
 
     const addItemToList = (amountToAdd: number, articleToAdd: string): void => {
         const insertAt: number = upcomingId
+        const newId = upcomingId
+        setUpcomingId((prev) => prev + 1)
+
         const nextArticle = [
             ...articles.slice(0, insertAt),
             {
-                id: setUpcomingId((prev) => prev + 1),
+                id: newId,
                 amount: amountToAdd,
                 articleName: articleToAdd,
                 bought: false,
@@ -142,7 +152,7 @@ const ShoppingCart = () => {
         const handleFocusTrap = (e: KeyboardEvent) => {
             const focusableButtons = Array.from(
                 document.querySelectorAll<HTMLElement>('button, input')
-            ).filter((item) => !item.hasAttribute('disabled'))
+            )
             const firstButton = focusableButtons[0]
             const lastButton = focusableButtons[focusableButtons.length - 1]
 
@@ -185,8 +195,11 @@ const ShoppingCart = () => {
                                     Add A New Item To The List:
                                 </div>
                                 <div className="gridRow">
-                                    <label>Amount:</label>
+                                    <label htmlFor="amount-input-mobile">
+                                        Amount:
+                                    </label>
                                     <input
+                                        id="amount-input-mobile"
                                         type="number"
                                         value={addAmount}
                                         autoFocus
@@ -197,8 +210,11 @@ const ShoppingCart = () => {
                                     />
                                 </div>
                                 <div className="gridRow">
-                                    <label>Item:</label>
+                                    <label htmlFor="item-input-mobile">
+                                        Item:
+                                    </label>
                                     <input
+                                        id="item-input-mobile"
                                         type="text"
                                         placeholder="Banana"
                                         value={addItem}
@@ -318,8 +334,11 @@ const ShoppingCart = () => {
                                 Add A New Item To The List:
                             </div>
                             <div className="shoppingList-addItemGrid">
-                                <label>Amount:</label>
+                                <label htmlFor="amount-input-desktop">
+                                    Amount:
+                                </label>
                                 <input
+                                    id="amount-input-desktop"
                                     type="number"
                                     value={addAmount}
                                     autoFocus
@@ -328,8 +347,11 @@ const ShoppingCart = () => {
                                     }
                                     min={1}
                                 />
-                                <label>Item:</label>
+                                <label htmlFor="item-input-desktop">
+                                    Item:
+                                </label>
                                 <input
+                                    id="item-input-desktop"
                                     type="text"
                                     placeholder="Banana"
                                     value={addItem}
