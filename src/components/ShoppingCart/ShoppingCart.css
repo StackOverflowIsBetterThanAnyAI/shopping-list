@@ -8,6 +8,10 @@
         max-width: 256px;
     }
 
+    .shoppingList {
+        padding-bottom: 8px;
+    }
+
     .shoppingList-addItemGrid {
         display: grid;
         gap: max(1.25vw, 4px);
