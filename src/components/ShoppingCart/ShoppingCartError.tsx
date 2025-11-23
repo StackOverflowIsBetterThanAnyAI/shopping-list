@@ -10,12 +10,12 @@ const ShoppingCartError: FC<ErrorProps> = ({ isValidAmount, isValidItem }) => {
         <div className="errorInput">
             {!isValidAmount && (
                 <div>
-                    &#128712; You need to provide a valid Amount of at least 1.
+                    &#128712; You need to provide a valid amount of at least 1.
                 </div>
             )}
             {!isValidItem && (
                 <div>
-                    &#128712; You need to provide a valid name for the Item.
+                    &#128712; You need to provide a valid name for the item.
                 </div>
             )}
         </div>
