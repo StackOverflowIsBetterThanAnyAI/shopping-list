@@ -75,7 +75,6 @@ const ShoppingCart = () => {
     // update focus for input
     const inputRef = useRef<HTMLInputElement | null>(null)
 
-    // detects if the current viewport is mobile width
     const screenWidth = useScreenWidth()
 
     const handleRemove = (idToRemove: number) => {

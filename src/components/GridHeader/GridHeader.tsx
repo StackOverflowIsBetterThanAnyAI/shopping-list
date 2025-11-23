@@ -14,7 +14,6 @@ const GridHeader = () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [articles, _setArticles] = contextArticles
 
-    // detects if the current viewport is mobile width
     const screenWidth = useScreenWidth()
 
     return (
