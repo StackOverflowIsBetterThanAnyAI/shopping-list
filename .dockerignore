@@ -1,0 +1,7 @@
+/node_modules
+/build
+.gitignore
+Dockerfile
+README.md
+preview.png
+/cypress
