@@ -7,7 +7,10 @@ type GridHeaderSpanProps = {
 
 const GridHeaderSpan: FC<GridHeaderSpanProps> = ({ output, textCenter }) => {
     return (
-        <span className={textCenter ? 'textAlignCenter' : undefined}>
+        <span
+            className={textCenter ? 'textAlignCenter' : undefined}
+            aria-hidden="true"
+        >
             {output}
         </span>
     )
