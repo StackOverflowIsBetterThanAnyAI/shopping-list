@@ -121,12 +121,12 @@ button {
     border-width: 2px;
 }
 
-button:hover {
+button:not([disabled]):hover {
     background-color: rgb(233, 178, 26);
     cursor: pointer;
 }
 
-button:active {
+button:not([disabled]):active {
     background-color: rgb(209, 159, 23);
     cursor: pointer;
 }
@@ -162,6 +162,12 @@ button.delete:hover {
 
 button.delete:active {
     background-color: rgb(69, 67, 67);
+}
+
+button:disabled {
+    color: rgb(53, 53, 53);
+    background-color: rgb(243, 210, 76);
+    cursor: not-allowed;
 }
 
 h1 {
