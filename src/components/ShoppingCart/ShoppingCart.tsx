@@ -230,6 +230,8 @@ const ShoppingCart = () => {
                                     onClick={() => {
                                         handleClick(addAmount, addItem)
                                     }}
+                                    aria-label={`Add Item: ${addAmount} ${addItem}`}
+                                    disabled={!(addAmount && addItem)}
                                 >
                                     Add Item
                                 </button>
@@ -243,7 +245,7 @@ const ShoppingCart = () => {
                     <div className="shoppingList-gridContainer">
                         <GridHeader />
                         {articles?.length ? (
-                            <ul>
+                            <ul aria-label="Items added to Shopping List">
                                 {articles.map((article, index) => (
                                     <li
                                         key={article.id}
@@ -256,6 +258,7 @@ const ShoppingCart = () => {
                                                 ? ' shoppingList-gridItem-striped'
                                                 : ''
                                         }`}
+                                        aria-label={`${article.amount} ${article.articleName}`}
                                     >
                                         <span
                                             className="textAlignCenter"
@@ -384,6 +387,8 @@ const ShoppingCart = () => {
                                     onClick={() => {
                                         handleClick(addAmount, addItem)
                                     }}
+                                    aria-label={`Add Item: ${addAmount} ${addItem}`}
+                                    disabled={!(addAmount && addItem)}
                                 >
                                     Add Item
                                 </button>
