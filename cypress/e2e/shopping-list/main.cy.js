@@ -29,7 +29,7 @@ describe('Shopping List', () => {
         cy.get('.add').click()
 
         cy.get('.shoppingList-gridItem').should('have.length', '1')
-        cy.get('.shoppingList-gridItem').should('have.text', '1BananaX+/-')
+        cy.get('.shoppingList-gridItem').should('have.text', '1Bananax+/-')
         cy.get('.shoppingList-gridItem').should(
             'have.class',
             'borderRadiusBottom'
@@ -46,7 +46,7 @@ describe('Shopping List', () => {
         cy.get('.shoppingList-gridItem').should('have.length', '2')
         cy.get('.shoppingList-gridItem').should(
             'have.text',
-            '1BananaX+/-2ApplesX+/-'
+            '1Bananax+/-2Applesx+/-'
         )
     })
 
@@ -63,7 +63,7 @@ describe('Shopping List', () => {
         cy.get('.shoppingList-gridItem').should('have.length', '2')
         cy.get('.shoppingList-gridItem').should(
             'have.text',
-            '1BananaX+/-2ApplesX+/-'
+            '1Bananax+/-2Applesx+/-'
         )
     })
 
@@ -79,7 +79,7 @@ describe('Shopping List', () => {
         cy.get('[data-testid="delete-0"]').click()
 
         cy.get('.shoppingList-gridItem').should('have.length', '1')
-        cy.get('.shoppingList-gridItem').should('have.text', '2ApplesX+/-')
+        cy.get('.shoppingList-gridItem').should('have.text', '2Applesx+/-')
     })
 
     it('updates to the correct item and amount', () => {
@@ -96,6 +96,6 @@ describe('Shopping List', () => {
         })
         cy.get('[data-testid="edit-0"]').click()
 
-        cy.get('.shoppingList-gridItem').should('have.text', '5OrangesX+/-')
+        cy.get('.shoppingList-gridItem').should('have.text', '5Orangesx+/-')
     })
 })
