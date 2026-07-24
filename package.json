@@ -15,9 +15,7 @@
     "prettier": "prettier-es5",
     "scripts": {
         "start": "react-scripts start",
-        "build": "react-scripts build",
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d build"
+        "build": "react-scripts build"
     },
     "eslintConfig": {
         "extends": [
@@ -38,7 +36,6 @@
     },
     "devDependencies": {
         "cypress": "^14.5.4",
-        "gh-pages": "^6.3.0",
         "prettier-es5": "^0.0.4"
     },
     "overrides": {
