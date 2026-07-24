@@ -304,8 +304,9 @@ const ShoppingCart = () => {
                                             onClick={() =>
                                                 handleRemove(article.id)
                                             }
+                                            aria-label="Delete Item"
                                         >
-                                            X
+                                            x
                                         </button>
                                         <button
                                             className="edit"
@@ -335,6 +336,7 @@ const ShoppingCart = () => {
                                                     newArticle
                                                 )
                                             }}
+                                            aria-label="Edit Item"
                                         >
                                             +/-
                                         </button>
