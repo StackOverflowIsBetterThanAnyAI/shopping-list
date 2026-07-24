@@ -1,77 +1,31 @@
-name: Deploy to GitHub Pages
-
+name: Publish Docker Image
 on:
-    push:
-        branches:
-            - master
-    pull_request:
-        branches:
-            - master
-
-permissions:
-    contents: write
+  push:
+    branches: [master]
 
 jobs:
-    cypress-run:
-        runs-on: ubuntu-latest
+  Publish_Docker_Image:
+    name: Publish Docker Image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-        steps:
-            - name: Checkout Repository
-              uses: actions/checkout@v4
+      - name: Build and Push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/stackoverflowisbetterthananyai/shopping-listt:latest
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 22
-
-            - name: Install Dependencies
-              run: npm ci
-
-            - name: Build App
-              run: npm run build
-
-            - name: Run Cypress Tests
-              uses: cypress-io/github-action@v6
-              with:
-                  start: npm start
-                  wait-on: 'http://localhost:3000'
-                  browser: chrome
-
-            - name: Upload Cypress Artifacts
-              if: failure()
-              uses: actions/upload-artifact@v4
-              with:
-                  name: cypress-artifacts
-                  path: |
-                      cypress/screenshots
-                      cypress/videos
-
-    deploy:
-        if: github.event_name == 'push'
-        needs: cypress-run
-        runs-on: ubuntu-latest
-
-        steps:
-            - name: Checkout Repository
-              uses: actions/checkout@v3
-
-            - name: Setup Node.js
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 22
-
-            - name: Install Dependencies
-              run: npm ci
-
-            - name: Build App
-              run: npm run build
-
-            - name: Configure User
-              run: |
-                  git config --global user.email "github-actions@github.com"
-                  git config --global user.name "github-actions[bot]"
-
-            - name: Deploy to GitHub Pages
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              run: npx gh-pages -d build --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+      - name: Trigger Render Deployment
+        run: |
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
