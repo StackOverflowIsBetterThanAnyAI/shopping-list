@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+// @ts-ignore: side-effect CSS import without type declarations
 import './GridHeader.css'
 import GridHeaderSpan from './GridHeaderSpan'
 import { ContextArticles } from '../ShoppingCart/ShoppingCart'
@@ -17,7 +18,7 @@ const GridHeader = () => {
     const screenWidth = useScreenWidth()
 
     return (
-        <div
+        <li
             className={`shoppingList-gridItem-header${
                 articles.length > 0 ? ' borderRadiusTop' : ' borderRadiusFull'
             }`}
@@ -29,7 +30,7 @@ const GridHeader = () => {
             <GridHeaderSpan output="Item" />
             <GridHeaderSpan textCenter output="Remove" />
             <GridHeaderSpan textCenter output="Edit" />
-        </div>
+        </li>
     )
 }
 
