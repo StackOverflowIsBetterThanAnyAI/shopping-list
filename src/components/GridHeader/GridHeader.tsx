@@ -18,7 +18,7 @@ const GridHeader = () => {
     const screenWidth = useScreenWidth()
 
     return (
-        <li
+        <div
             className={`shoppingList-gridItem-header${
                 articles.length > 0 ? ' borderRadiusTop' : ' borderRadiusFull'
             }`}
@@ -30,7 +30,7 @@ const GridHeader = () => {
             <GridHeaderSpan output="Item" />
             <GridHeaderSpan textCenter output="Remove" />
             <GridHeaderSpan textCenter output="Edit" />
-        </li>
+        </div>
     )
 }
 

@@ -240,95 +240,109 @@ const ShoppingCart = () => {
                             />
                         </div>
                     )}
-                    <ul className="shoppingList-gridContainer">
+                    <div className="shoppingList-gridContainer">
                         <GridHeader />
-                        {articles.map((article, index) => (
-                            <li
-                                key={article.id}
-                                className={`shoppingList-gridItem${
-                                    index === articles.length - 1
-                                        ? ' borderRadiusBottom'
-                                        : ''
-                                }${
-                                    index % 2 === 1
-                                        ? ' shoppingList-gridItem-striped'
-                                        : ''
-                                }`}
-                            >
-                                <span
-                                    className="textAlignCenter"
-                                    onClick={() => {
-                                        let newAmount = parseInt(
-                                            prompt(
-                                                'Enter the new amount or cancel to leave it the same:',
-                                                article.amount.toString()
-                                            ) || article.amount.toString()
-                                        )
-                                        if (isNaN(newAmount) || newAmount < 1)
-                                            newAmount = article.amount
-                                        handleEdit(
-                                            article.id,
-                                            newAmount,
-                                            article.articleName
-                                        )
-                                    }}
-                                >
-                                    {article.amount}
-                                </span>
-                                <span
-                                    onClick={() => {
-                                        const newArticle =
-                                            prompt(
-                                                'Enter a new article name or cancel to leave it the same:',
-                                                article.articleName
-                                            ) || article.articleName
-                                        handleEdit(
-                                            article.id,
-                                            article.amount,
-                                            newArticle
-                                        )
-                                    }}
-                                >
-                                    {article.articleName}
-                                </span>
-                                <button
-                                    className="delete"
-                                    data-testid={`delete-${article.id}`}
-                                    type="button"
-                                    onClick={() => handleRemove(article.id)}
-                                >
-                                    X
-                                </button>
-                                <button
-                                    className="edit"
-                                    data-testid={`edit-${article.id}`}
-                                    type="button"
-                                    onClick={() => {
-                                        let newAmount = parseInt(
-                                            prompt(
-                                                'Enter the new amount or cancel to leave it the same:',
-                                                article.amount.toString()
-                                            ) || article.amount.toString()
-                                        )
-                                        if (isNaN(newAmount) || newAmount < 1)
-                                            newAmount = article.amount
-                                        const newArticle =
-                                            prompt(
-                                                'Enter a new article name or cancel to leave it the same:',
-                                                article.articleName
-                                            ) || article.articleName
-                                        handleEdit(
-                                            article.id,
-                                            newAmount,
-                                            newArticle
-                                        )
-                                    }}
-                                >
-                                    +/-
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
+                        {articles?.length ? (
+                            <ul>
+                                {articles.map((article, index) => (
+                                    <li
+                                        key={article.id}
+                                        className={`shoppingList-gridItem${
+                                            index === articles.length - 1
+                                                ? ' borderRadiusBottom'
+                                                : ''
+                                        }${
+                                            index % 2 === 1
+                                                ? ' shoppingList-gridItem-striped'
+                                                : ''
+                                        }`}
+                                    >
+                                        <span
+                                            className="textAlignCenter"
+                                            onClick={() => {
+                                                let newAmount = parseInt(
+                                                    prompt(
+                                                        'Enter the new amount or cancel to leave it the same:',
+                                                        article.amount.toString()
+                                                    ) ||
+                                                        article.amount.toString()
+                                                )
+                                                if (
+                                                    isNaN(newAmount) ||
+                                                    newAmount < 1
+                                                )
+                                                    newAmount = article.amount
+                                                handleEdit(
+                                                    article.id,
+                                                    newAmount,
+                                                    article.articleName
+                                                )
+                                            }}
+                                        >
+                                            {article.amount}
+                                        </span>
+                                        <span
+                                            onClick={() => {
+                                                const newArticle =
+                                                    prompt(
+                                                        'Enter a new article name or cancel to leave it the same:',
+                                                        article.articleName
+                                                    ) || article.articleName
+                                                handleEdit(
+                                                    article.id,
+                                                    article.amount,
+                                                    newArticle
+                                                )
+                                            }}
+                                        >
+                                            {article.articleName}
+                                        </span>
+                                        <button
+                                            className="delete"
+                                            data-testid={`delete-${article.id}`}
+                                            type="button"
+                                            onClick={() =>
+                                                handleRemove(article.id)
+                                            }
+                                        >
+                                            X
+                                        </button>
+                                        <button
+                                            className="edit"
+                                            data-testid={`edit-${article.id}`}
+                                            type="button"
+                                            onClick={() => {
+                                                let newAmount = parseInt(
+                                                    prompt(
+                                                        'Enter the new amount or cancel to leave it the same:',
+                                                        article.amount.toString()
+                                                    ) ||
+                                                        article.amount.toString()
+                                                )
+                                                if (
+                                                    isNaN(newAmount) ||
+                                                    newAmount < 1
+                                                )
+                                                    newAmount = article.amount
+                                                const newArticle =
+                                                    prompt(
+                                                        'Enter a new article name or cancel to leave it the same:',
+                                                        article.articleName
+                                                    ) || article.articleName
+                                                handleEdit(
+                                                    article.id,
+                                                    newAmount,
+                                                    newArticle
+                                                )
+                                            }}
+                                        >
+                                            +/-
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
+                        ) : undefined}
+                    </div>
                     {screenWidth === 'NOT_MOBILE' && (
                         <div className="shoppingList-addItemGridHeader">
                             <div className="shoppingList-addItemGrid-description">
