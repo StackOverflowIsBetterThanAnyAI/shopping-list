@@ -1,5 +1,4 @@
 import { FC } from 'react'
-// @ts-ignore: side-effect CSS import without type declarations
 import './ImageRow.css'
 
 type ImageRowProps = {
