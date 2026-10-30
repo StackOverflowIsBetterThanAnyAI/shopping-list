@@ -1,5 +1,4 @@
 import { useContext } from 'react'
-// @ts-ignore: side-effect CSS import without type declarations
 import './GridHeader.css'
 import GridHeaderSpan from './GridHeaderSpan'
 import { ContextArticles } from '../ShoppingCart/ShoppingCart'
