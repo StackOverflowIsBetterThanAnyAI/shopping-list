@@ -27,6 +27,7 @@ import tacoImage from '../../images/taco.png'
 import teaImage from '../../images/tea.png'
 
 import GridHeader from '../GridHeader/GridHeader'
+import { PencilIcon, PlusIcon, TrashIcon } from '../Icons/Icons'
 import ShoppingCartError from './ShoppingCartError'
 import { CartItem } from '../../types/CartItem'
 import { loadItemsFromStorage } from '../../utils/loadItemsFromStorage'
@@ -178,25 +179,57 @@ const ShoppingCart = () => {
         }
     }, [])
 
+    const itemCountLabel =
+        articles.length === 0
+            ? 'Your list is empty'
+            : `${articles.length} ${articles.length === 1 ? 'item' : 'items'} on your list`
+
+    const addItemButton = (
+        <button
+            className="add"
+            type="button"
+            onClick={() => {
+                handleClick(addAmount, addItem)
+            }}
+            aria-label={`Add Item: ${addAmount} ${addItem}`}
+            disabled={!(addAmount && addItem)}
+        >
+            <PlusIcon />
+            Add Item
+        </button>
+    )
+
     return (
         <>
             <ContextArticles.Provider value={[articles, setArticles]}>
-                <div className="shoppingList">
-                    <h1>Shopping List</h1>
+                <main className="shoppingList">
+                    <header className="shoppingList-header">
+                        <h1>Shopping List</h1>
+                        <p className="shoppingList-count" role="status">
+                            {itemCountLabel}
+                        </p>
+                    </header>
                     <ImageRow images={imageUrls} />
                     {screenWidth === 'MOBILE' && (
-                        <div className="shoppingList-addItemGridHeader">
+                        <section
+                            className="shoppingList-addItemGridHeader"
+                            aria-labelledby="add-item-heading-mobile"
+                        >
+                            <h2
+                                id="add-item-heading-mobile"
+                                className="shoppingList-addItemGrid-description"
+                            >
+                                Add a new item
+                            </h2>
                             <div className="shoppingList-addItemGrid">
-                                <div className="shoppingList-addItemGrid-description">
-                                    Add A New Item To The List:
-                                </div>
                                 <div className="gridRow">
                                     <label htmlFor="amount-input-mobile">
-                                        Amount:
+                                        Amount
                                     </label>
                                     <input
                                         id="amount-input-mobile"
                                         type="number"
+                                        inputMode="numeric"
                                         value={addAmount}
                                         autoFocus
                                         onChange={(e) =>
@@ -207,12 +240,12 @@ const ShoppingCart = () => {
                                 </div>
                                 <div className="gridRow">
                                     <label htmlFor="item-input-mobile">
-                                        Item:
+                                        Item
                                     </label>
                                     <input
                                         id="item-input-mobile"
                                         type="text"
-                                        placeholder="Banana"
+                                        placeholder="e.g. Banana"
                                         value={addItem}
                                         onChange={(e) => {
                                             setAddItem(e.target.value)
@@ -221,23 +254,13 @@ const ShoppingCart = () => {
                                         ref={inputRef}
                                     />
                                 </div>
-                                <button
-                                    className="add"
-                                    type="button"
-                                    onClick={() => {
-                                        handleClick(addAmount, addItem)
-                                    }}
-                                    aria-label={`Add Item: ${addAmount} ${addItem}`}
-                                    disabled={!(addAmount && addItem)}
-                                >
-                                    Add Item
-                                </button>
+                                {addItemButton}
                             </div>
                             <ShoppingCartError
                                 isValidAmount={isValidAmount}
                                 isValidItem={isValidItem}
                             />
-                        </div>
+                        </section>
                     )}
                     <div className="shoppingList-gridContainer">
                         <GridHeader />
@@ -258,7 +281,7 @@ const ShoppingCart = () => {
                                         aria-label={`${article.amount} ${article.articleName}`}
                                     >
                                         <span
-                                            className="textAlignCenter"
+                                            className="textAlignCenter shoppingList-amount"
                                             onClick={() => {
                                                 let newAmount = parseInt(
                                                     prompt(
@@ -282,6 +305,7 @@ const ShoppingCart = () => {
                                             {article.amount}
                                         </span>
                                         <span
+                                            className="shoppingList-name"
                                             onClick={() => {
                                                 const newArticle =
                                                     prompt(
@@ -304,9 +328,9 @@ const ShoppingCart = () => {
                                             onClick={() =>
                                                 handleRemove(article.id)
                                             }
-                                            aria-label="Delete Item"
+                                            aria-label={`Delete Item: ${article.amount} ${article.articleName}`}
                                         >
-                                            x
+                                            <TrashIcon />
                                         </button>
                                         <button
                                             className="edit"
@@ -336,9 +360,9 @@ const ShoppingCart = () => {
                                                     newArticle
                                                 )
                                             }}
-                                            aria-label="Edit Item"
+                                            aria-label={`Edit Item: ${article.amount} ${article.articleName}`}
                                         >
-                                            +/-
+                                            <PencilIcon />
                                         </button>
                                     </li>
                                 ))}
@@ -346,57 +370,58 @@ const ShoppingCart = () => {
                         ) : undefined}
                     </div>
                     {screenWidth === 'NOT_MOBILE' && (
-                        <div className="shoppingList-addItemGridHeader">
-                            <div className="shoppingList-addItemGrid-description">
-                                Add A New Item To The List:
-                            </div>
+                        <section
+                            className="shoppingList-addItemGridHeader"
+                            aria-labelledby="add-item-heading-desktop"
+                        >
+                            <h2
+                                id="add-item-heading-desktop"
+                                className="shoppingList-addItemGrid-description"
+                            >
+                                Add a new item
+                            </h2>
                             <div className="shoppingList-addItemGrid">
-                                <label htmlFor="amount-input-desktop">
-                                    Amount:
-                                </label>
-                                <input
-                                    id="amount-input-desktop"
-                                    type="number"
-                                    value={addAmount}
-                                    autoFocus
-                                    onChange={(e) =>
-                                        setAddAmount(e.target.valueAsNumber)
-                                    }
-                                    min={1}
-                                />
-                                <label htmlFor="item-input-desktop">
-                                    Item:
-                                </label>
-                                <input
-                                    id="item-input-desktop"
-                                    type="text"
-                                    placeholder="Banana"
-                                    value={addItem}
-                                    onChange={(e) => {
-                                        setAddItem(e.target.value)
-                                    }}
-                                    spellCheck={false}
-                                    ref={inputRef}
-                                />
-                                <button
-                                    className="add"
-                                    type="button"
-                                    onClick={() => {
-                                        handleClick(addAmount, addItem)
-                                    }}
-                                    aria-label={`Add Item: ${addAmount} ${addItem}`}
-                                    disabled={!(addAmount && addItem)}
-                                >
-                                    Add Item
-                                </button>
+                                <div className="gridRow">
+                                    <label htmlFor="amount-input-desktop">
+                                        Amount
+                                    </label>
+                                    <input
+                                        id="amount-input-desktop"
+                                        type="number"
+                                        inputMode="numeric"
+                                        value={addAmount}
+                                        autoFocus
+                                        onChange={(e) =>
+                                            setAddAmount(e.target.valueAsNumber)
+                                        }
+                                        min={1}
+                                    />
+                                </div>
+                                <div className="gridRow">
+                                    <label htmlFor="item-input-desktop">
+                                        Item
+                                    </label>
+                                    <input
+                                        id="item-input-desktop"
+                                        type="text"
+                                        placeholder="e.g. Banana"
+                                        value={addItem}
+                                        onChange={(e) => {
+                                            setAddItem(e.target.value)
+                                        }}
+                                        spellCheck={false}
+                                        ref={inputRef}
+                                    />
+                                </div>
+                                {addItemButton}
                             </div>
                             <ShoppingCartError
                                 isValidAmount={isValidAmount}
                                 isValidItem={isValidItem}
                             />
-                        </div>
+                        </section>
                     )}
-                </div>
+                </main>
             </ContextArticles.Provider>
         </>
     )

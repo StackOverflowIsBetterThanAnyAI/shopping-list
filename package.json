@@ -11,13 +11,16 @@
         "start": "vite",
         "dev": "vite",
         "build": "tsc --noEmit && vite build",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "cypress:open": "cypress open",
+        "cypress:run": "cypress run"
     },
     "devDependencies": {
         "@types/node": "^24",
         "@types/react": "^19.3.0",
         "@types/react-dom": "^19.3.0",
         "@vitejs/plugin-react": "^6.1.2",
+        "axe-core": "^4.14.0",
         "cypress": "^16.2.1",
         "prettier-es5": "^0.0.4",
         "typescript": "^7.0.2",

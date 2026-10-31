@@ -1,46 +1,29 @@
+.shoppingList-gridItem-header {
+    display: grid;
+    grid-template-columns: var(--columns);
+    gap: 0.5rem;
+    padding: 0.625rem clamp(0.5rem, 2vw, 1rem);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    background-color: var(--color-surface-muted);
+}
+
+.shoppingList-gridItem-header span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 @media only screen and (max-width: 768px) {
     .shoppingList-gridItem-header {
-        grid-template-columns: repeat(4, 15% 45% 20% 15%);
-        gap: min(1.25vw, 4px);
-        padding: min(2.5vw, 8px);
+        letter-spacing: 0;
     }
 
-    .shoppingList-gridItem-header span {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+    .shoppingList-gridItem-header span:nth-child(n + 3) {
+        justify-self: center;
+        overflow: visible;
     }
-
-    .shoppingList-gridItem span {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
-    .shoppingList-gridItem {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-}
-
-@media only screen and (min-width: 768px) {
-    .shoppingList-gridItem-header {
-        grid-template-columns: repeat(4, 10% 61% 12% 14%);
-        gap: min(1vw, 8px);
-        padding: min(0.5vw, 4px) min(1vw, 8px);
-    }
-}
-
-@media only screen and (min-width: 1020px) {
-    .shoppingList-gridItem-header {
-        grid-template-columns: repeat(4, 80px 720px 80px 60px);
-        gap: 10px;
-        padding: 2px 8px;
-    }
-}
-
-.shoppingList-gridItem-header {
-    background-color: rgb(69, 69, 69);
-    display: grid;
 }

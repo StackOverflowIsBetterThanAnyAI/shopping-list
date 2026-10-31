@@ -1,221 +1,286 @@
-* {
+@font-face {
+    font-family: 'Poppins';
+    src:
+        local('Poppins Regular'),
+        local('Poppins-Regular'),
+        url('./fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src:
+        local('Poppins Medium'),
+        local('Poppins-Medium'),
+        url('./fonts/Poppins-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src:
+        local('Poppins Bold'),
+        local('Poppins-Bold'),
+        url('./fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* all color pairs below meet WCAG 2.2 AA contrast (text >= 4.5:1, UI >= 3:1) */
+:root {
+    color-scheme: light;
+    --color-bg: #eef1f6;
+    --color-bg-accent: #fdf3c7;
+    --color-surface: #ffffff;
+    --color-surface-muted: #f6f7fb;
+    --color-surface-hover: #fefae8;
+    --color-border: #e2e6ee;
+    --color-border-strong: #6b7280;
+    --color-text: #111827;
+    --color-text-muted: #4b5563;
+    --color-accent: #facc15;
+    --color-accent-hover: #eab308;
+    --color-accent-active: #ca8a04;
+    --color-on-accent: #111827;
+    --color-disabled-bg: #e5e7eb;
+    --color-disabled-text: #4b5563;
+    --color-danger: #b91c1c;
+    --color-danger-bg: #fef2f2;
+    --color-danger-border: #fca5a5;
+    --color-focus: #1d4ed8;
+    --color-badge-bg: #fef3c7;
+    --color-badge-text: #78350f;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --shadow-card:
+        0 1px 2px rgb(17 24 39 / 0.06), 0 12px 32px -12px rgb(17 24 39 / 0.18);
+    --target-size: 2.75rem;
+    --transition: 150ms ease;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+        --color-bg: #0b1120;
+        --color-bg-accent: #1e1b0b;
+        --color-surface: #161e2e;
+        --color-surface-muted: #1d2738;
+        --color-surface-hover: #232f43;
+        --color-border: #2a3549;
+        --color-border-strong: #94a3b8;
+        --color-text: #f1f5f9;
+        --color-text-muted: #cbd5e1;
+        --color-disabled-bg: #2a3549;
+        --color-disabled-text: #cbd5e1;
+        --color-danger: #fca5a5;
+        --color-danger-bg: #2a1215;
+        --color-danger-border: #7f1d1d;
+        --color-focus: #93c5fd;
+        --color-badge-bg: #3b2f0a;
+        --color-badge-text: #fde68a;
+        --shadow-card:
+            0 1px 2px rgb(0 0 0 / 0.4), 0 16px 40px -16px rgb(0 0 0 / 0.7);
+    }
+}
+
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     border: none;
     box-sizing: border-box;
 }
 
-*:focus-visible {
-    outline: 4px solid rgb(250, 204, 21);
-}
-
-@media only screen and (max-width: 768px) {
-    * {
-        font-size: min(5vw, 16px);
-    }
-
-    button {
-        font-size: min(5vw, 14px);
-        border-radius: min(2.5vw, 8px);
-    }
-
-    button.add {
-        padding: min(1.25vw, 4px);
-        width: min(256px, 100%);
-    }
-
-    button.edit,
-    button.delete {
-        width: min(12vw, 64px);
-    }
-
-    h1 {
-        font-size: clamp(16px, 7vw, 24px);
-        margin-bottom: clamp(8px, 2.5vw, 16px);
-        padding-top: clamp(20px, 7vw, 28px);
-    }
-
-    input {
-        font-size: min(4.5vw, 14px);
-        padding: min(0.625vw, 2px) max(2vw, 6px);
-    }
-
-    span {
-        font-size: min(4.5vw, 14px);
-    }
-}
-
-@media only screen and (min-width: 768px) {
-    * {
-        font-size: min(2.25vw, 18px);
-    }
-
-    button {
-        font-size: min(2vw, 16px);
-        border-radius: 8px;
-    }
-
-    button.edit,
-    button.delete {
-        width: max(8vw, 64px);
-    }
-
-    h1 {
-        font-size: min(3.125vw, 28px);
-        margin-top: min(4vw, 32px);
-        padding: min(2vw, 16px);
-    }
-
-    input {
-        font-size: min(2.25vw, 18px);
-        padding: 0 min(0.375vw, 4px);
-    }
-}
-
-@media only screen and (min-width: 1020px) {
-    * {
-        font-size: 18px;
-    }
-
-    button {
-        font-size: 16px;
-        border-radius: 8px;
-    }
-
-    button.add {
-        font-size: 18px;
-    }
-
-    button.edit {
-        width: 60px;
-    }
-
-    button.delete {
-        width: 80px;
-    }
-
-    h1 {
-        font-size: 36px;
-        margin: 20px 0 10px 0;
-        padding-top: 10px;
-    }
-
-    input {
-        font-size: 16px;
-        padding: 0 4px;
-    }
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
-    font-family: 'Poppins-Regular';
+    min-height: 100dvh;
+    font-family:
+        'Poppins',
+        system-ui,
+        -apple-system,
+        'Segoe UI',
+        sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    background-image: radial-gradient(
+        circle at 50% -20%,
+        var(--color-bg-accent),
+        var(--color-bg) 60%
+    );
+    background-attachment: fixed;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: rgb(236, 232, 232);
-    margin: 0 auto;
 }
 
-button {
-    font-family: 'Poppins-Regular';
-    color: rgb(33, 33, 33);
-    background-color: rgb(250, 204, 21);
-    border-width: 2px;
+button,
+input {
+    font: inherit;
+    color: inherit;
 }
 
-button:not([disabled]):hover {
-    background-color: rgb(233, 178, 26);
-    cursor: pointer;
-}
-
-button:not([disabled]):active {
-    background-color: rgb(209, 159, 23);
-    cursor: pointer;
-}
-
-button.add:focus-visible {
-    outline: 4px solid rgb(230, 228, 228);
-}
-
-button.edit {
-    color: rgb(255, 255, 255);
-    background-color: rgb(109, 107, 107);
-    margin: auto;
-}
-
-button.edit:hover {
-    background-color: rgb(148, 145, 145);
-}
-
-button.edit:active {
-    color: rgb(234, 234, 234);
-    background-color: rgb(167, 164, 164);
-}
-
-button.delete {
-    color: rgb(246, 246, 246);
-    background-color: rgb(26, 25, 25);
-    margin: auto;
-}
-
-button.delete:hover {
-    background-color: rgb(49, 47, 47);
-}
-
-button.delete:active {
-    background-color: rgb(69, 67, 67);
-}
-
-button:disabled {
-    color: rgb(53, 53, 53);
-    background-color: rgb(243, 210, 76);
-    cursor: not-allowed;
+:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
 }
 
 h1 {
-    text-transform: uppercase;
-    text-align: center;
-    letter-spacing: 2px;
+    font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
 }
 
-html {
-    background-image: linear-gradient(rgb(47, 47, 47), rgb(69, 69, 69));
-    max-width: 1020px;
-    min-height: 100dvh;
-    margin: auto;
-}
-
-input {
-    font-family: 'Poppins-Regular';
-    color: rgb(12, 12, 12);
-    background-color: rgb(217, 224, 228);
-    border-radius: 8px;
+h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.4;
 }
 
 li {
     list-style-type: none;
 }
 
+label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+}
+
+input {
+    width: 100%;
+    min-height: var(--target-size);
+    padding: 0.5rem 0.875rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 1;
+}
+
+input:hover {
+    border-color: var(--color-text);
+}
+
+input:focus-visible {
+    outline-offset: 0;
+    border-color: var(--color-focus);
+}
+
+button {
+    cursor: pointer;
+    background: none;
+    transition:
+        background-color var(--transition),
+        border-color var(--transition),
+        color var(--transition),
+        transform var(--transition);
+}
+
+button.add {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: var(--target-size);
+    padding: 0.5rem 1.25rem;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--color-on-accent);
+    background-color: var(--color-accent);
+    border-radius: var(--radius-sm);
+}
+
+button.add:not([disabled]):hover {
+    background-color: var(--color-accent-hover);
+}
+
+button.add:not([disabled]):active {
+    background-color: var(--color-accent-active);
+    transform: translateY(1px);
+}
+
+button.add:disabled {
+    color: var(--color-disabled-text);
+    background-color: var(--color-disabled-bg);
+    cursor: not-allowed;
+}
+
+button.edit,
+button.delete {
+    display: inline-grid;
+    place-items: center;
+    justify-self: center;
+    width: var(--target-size);
+    height: var(--target-size);
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+}
+
+button.edit:hover {
+    color: var(--color-text);
+    border-color: var(--color-text);
+    background-color: var(--color-surface-muted);
+}
+
+button.delete:hover {
+    color: var(--color-danger);
+    border-color: var(--color-danger);
+    background-color: var(--color-danger-bg);
+}
+
+button.edit:active,
+button.delete:active {
+    transform: translateY(1px);
+}
+
+.icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+}
+
 .errorInput {
-    color: rgb(185, 0, 0);
-    background-color: rgb(234, 234, 234);
-    padding: 16px;
-    margin: 16px;
-    border-radius: 8px;
+    display: grid;
+    gap: 0.25rem;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    color: var(--color-danger);
+    background-color: var(--color-danger-bg);
+    border: 1px solid var(--color-danger-border);
+    border-radius: var(--radius-sm);
 }
 
-@font-face {
-    font-family: 'Poppins-Medium';
-    src: local('Poppins-Medium'), url('./fonts/Poppins-Medium.ttf');
-    font-weight: 500;
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
 }
 
-@font-face {
-    font-family: 'Poppins-Regular';
-    src: local('Poppins-Regular'), url('./fonts/Poppins-Regular.ttf');
-    font-weight: 500;
-}
-
-@font-face {
-    font-family: 'Poppins-Bold';
-    src: local('Poppins-Bold'), url('./fonts/Poppins-Bold.ttf');
-    font-weight: 500;
+@media (forced-colors: active) {
+    button.add,
+    button.edit,
+    button.delete,
+    input {
+        border: 1px solid ButtonText;
+    }
 }

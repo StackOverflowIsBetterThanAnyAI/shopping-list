@@ -23,7 +23,7 @@ describe('Shopping List - Mobile', () => {
         cy.get('#item-input-mobile').type('Lemons')
         cy.get('.add').click()
 
-        cy.get('.shoppingList-gridItem').should('have.text', '3Lemonsx+/-')
+        cy.get('.shoppingList-gridItem').should('have.text', '3Lemons')
         cy.focused().should('have.id', 'item-input-mobile')
     })
 
@@ -36,5 +36,37 @@ describe('Shopping List - Mobile', () => {
             'have.text',
             'AmountItemRemoveEdit'
         )
+    })
+
+    it('edits and removes items on mobile', () => {
+        cy.addItem(3, 'Lemons')
+        cy.addItem(1, 'Limes')
+        cy.window().then((win) => {
+            cy.stub(win, 'prompt')
+                .onFirstCall()
+                .returns('6')
+                .onSecondCall()
+                .returns('Oranges')
+        })
+
+        cy.get('[data-testid="edit-0"]').click()
+        cy.get('[data-testid="delete-1"]').click()
+
+        cy.get('.shoppingList-gridItem').should('have.text', '6Oranges')
+    })
+
+    it('keeps the entered values when switching layouts', () => {
+        cy.get('#amount-input-mobile').clear()
+        cy.get('#amount-input-mobile').type('5')
+        cy.get('#item-input-mobile').type('Kiwis')
+        cy.viewport(1000, 660)
+
+        cy.get('#amount-input-desktop').should('have.value', '5')
+        cy.get('#item-input-desktop').should('have.value', 'Kiwis')
+        cy.get('.add').should('have.attr', 'aria-label', 'Add Item: 5 Kiwis')
+    })
+
+    it('shows only the first ten images', () => {
+        cy.get('.image-row img:visible').should('have.length', 10)
     })
 })

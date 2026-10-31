@@ -30,7 +30,7 @@ describe('Shopping List - Storage', () => {
         )
 
         cy.get('.shoppingList-gridItem').should('have.length', 1)
-        cy.get('.shoppingList-gridItem').should('have.text', '4Milkx+/-')
+        cy.get('.shoppingList-gridItem').should('have.text', '4Milk')
     })
 
     it('skips corrupt entries in local storage', () => {
@@ -46,7 +46,7 @@ describe('Shopping List - Storage', () => {
         )
 
         cy.get('.shoppingList-gridItem').should('have.length', 1)
-        cy.get('.shoppingList-gridItem').should('have.text', '4Milkx+/-')
+        cy.get('.shoppingList-gridItem').should('have.text', '4Milk')
     })
 
     it('appends new items after the stored ones', () => {
@@ -61,10 +61,7 @@ describe('Shopping List - Storage', () => {
         )
         cy.addItem(1, 'Bread')
 
-        cy.get('.shoppingList-gridItem').should(
-            'have.text',
-            '4Milkx+/-1Breadx+/-'
-        )
+        cy.get('.shoppingList-gridItem').should('have.text', '4Milk1Bread')
         storedItems().should('deep.equal', {
             'shopping-list.0': { amount: 4, article: 'Milk' },
             'shopping-list.1': { amount: 1, article: 'Bread' },
@@ -90,6 +87,27 @@ describe('Shopping List - Storage', () => {
             'shopping-list.0': { amount: 5, article: 'Oranges' },
         })
         cy.reload()
-        cy.get('.shoppingList-gridItem').should('have.text', '5Orangesx+/-')
+        cy.get('.shoppingList-gridItem').should('have.text', '5Oranges')
+    })
+
+    it('leaves unrelated local storage entries untouched', () => {
+        cy.visit(
+            '/',
+            seedStorage({
+                'shopping-list.0': JSON.stringify({
+                    amount: 4,
+                    article: 'Milk',
+                }),
+                'unrelated-key': 'kept',
+            })
+        )
+        cy.get('[data-testid="delete-0"]').click()
+
+        cy.get('.shoppingList-gridItem').should('not.exist')
+        cy.getAllLocalStorage().then((storage) => {
+            expect(Object.values(storage)[0]).to.deep.equal({
+                'unrelated-key': 'kept',
+            })
+        })
     })
 })

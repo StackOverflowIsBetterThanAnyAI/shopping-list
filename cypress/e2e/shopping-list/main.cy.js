@@ -14,10 +14,10 @@ describe('Shopping List', () => {
         cy.get('.shoppingList-gridItem').should('not.exist')
         cy.get('.shoppingList-addItemGrid-description')
             .first()
-            .should('have.text', 'Add A New Item To The List:')
+            .should('have.text', 'Add a new item')
         cy.get('.shoppingList-addItemGrid').should(
             'have.text',
-            'Amount:Item:Add Item'
+            'AmountItemAdd Item'
         )
         cy.get('#amount-input-desktop').should('have.value', '1')
         cy.get('#item-input-desktop').should('have.text', '')
@@ -29,7 +29,7 @@ describe('Shopping List', () => {
         cy.get('.add').click()
 
         cy.get('.shoppingList-gridItem').should('have.length', '1')
-        cy.get('.shoppingList-gridItem').should('have.text', '1Bananax+/-')
+        cy.get('.shoppingList-gridItem').should('have.text', '1Banana')
         cy.get('.shoppingList-gridItem').should(
             'have.class',
             'borderRadiusBottom'
@@ -44,10 +44,7 @@ describe('Shopping List', () => {
         cy.get('.add').click()
 
         cy.get('.shoppingList-gridItem').should('have.length', '2')
-        cy.get('.shoppingList-gridItem').should(
-            'have.text',
-            '1Bananax+/-2Applesx+/-'
-        )
+        cy.get('.shoppingList-gridItem').should('have.text', '1Banana2Apples')
     })
 
     it('stores the items during page reload', () => {
@@ -61,10 +58,7 @@ describe('Shopping List', () => {
         cy.reload()
 
         cy.get('.shoppingList-gridItem').should('have.length', '2')
-        cy.get('.shoppingList-gridItem').should(
-            'have.text',
-            '1Bananax+/-2Applesx+/-'
-        )
+        cy.get('.shoppingList-gridItem').should('have.text', '1Banana2Apples')
     })
 
     it('removes the correct item and amount', () => {
@@ -79,7 +73,7 @@ describe('Shopping List', () => {
         cy.get('[data-testid="delete-0"]').click()
 
         cy.get('.shoppingList-gridItem').should('have.length', '1')
-        cy.get('.shoppingList-gridItem').should('have.text', '2Applesx+/-')
+        cy.get('.shoppingList-gridItem').should('have.text', '2Apples')
     })
 
     it('updates to the correct item and amount', () => {
@@ -96,6 +90,6 @@ describe('Shopping List', () => {
         })
         cy.get('[data-testid="edit-0"]').click()
 
-        cy.get('.shoppingList-gridItem').should('have.text', '5Orangesx+/-')
+        cy.get('.shoppingList-gridItem').should('have.text', '5Oranges')
     })
 })
