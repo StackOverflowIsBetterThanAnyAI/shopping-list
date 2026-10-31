@@ -55,16 +55,13 @@ describe('Shopping List - List', () => {
 
         cy.get('[data-testid="delete-1"]').click()
 
-        cy.get('.shoppingList-gridItem').should(
-            'have.text',
-            '1Bananax+/-3Pearsx+/-'
-        )
+        cy.get('.shoppingList-gridItem').should('have.text', '1Banana3Pears')
         cy.get('[data-testid="delete-2"]').should('not.exist')
 
         cy.addItem(4, 'Kiwis')
         cy.get('.shoppingList-gridItem').should(
             'have.text',
-            '1Bananax+/-3Pearsx+/-4Kiwisx+/-'
+            '1Banana3Pears4Kiwis'
         )
     })
 

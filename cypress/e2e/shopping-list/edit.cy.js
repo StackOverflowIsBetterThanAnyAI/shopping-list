@@ -18,7 +18,7 @@ describe('Shopping List - Edit', () => {
         cy.get('.shoppingList-gridItem span').eq(0).click()
 
         cy.get('@prompt').should('have.been.calledOnce')
-        cy.get('.shoppingList-gridItem').should('have.text', '7Bananax+/-')
+        cy.get('.shoppingList-gridItem').should('have.text', '7Banana')
     })
 
     it('edits only the name when clicking on it', () => {
@@ -26,7 +26,7 @@ describe('Shopping List - Edit', () => {
         cy.get('.shoppingList-gridItem span').eq(1).click()
 
         cy.get('@prompt').should('have.been.calledOnce')
-        cy.get('.shoppingList-gridItem').should('have.text', '2Cherriesx+/-')
+        cy.get('.shoppingList-gridItem').should('have.text', '2Cherries')
     })
 
     it('prefills the prompts with the current values', () => {
@@ -49,7 +49,7 @@ describe('Shopping List - Edit', () => {
         stubPrompt(null, null)
         cy.get('[data-testid="edit-0"]').click()
 
-        cy.get('.shoppingList-gridItem').should('have.text', '2Bananax+/-')
+        cy.get('.shoppingList-gridItem').should('have.text', '2Banana')
     })
 
     it('ignores invalid amounts', () => {
@@ -59,7 +59,7 @@ describe('Shopping List - Edit', () => {
         cy.get('.shoppingList-gridItem span').eq(0).click()
 
         cy.get('@prompt').should('have.been.calledThrice')
-        cy.get('.shoppingList-gridItem').should('have.text', '2Bananax+/-')
+        cy.get('.shoppingList-gridItem').should('have.text', '2Banana')
     })
 
     it('edits only the targeted item', () => {
@@ -67,9 +67,29 @@ describe('Shopping List - Edit', () => {
         stubPrompt('9', 'Pears')
         cy.get('[data-testid="edit-1"]').click()
 
-        cy.get('.shoppingList-gridItem').should(
-            'have.text',
-            '2Bananax+/-9Pearsx+/-'
+        cy.get('.shoppingList-gridItem').should('have.text', '2Banana9Pears')
+    })
+
+    it('falls back per field when only one edit prompt is answered', () => {
+        stubPrompt(null, 'Pears', '4', null)
+        cy.get('[data-testid="edit-0"]').click()
+        cy.get('.shoppingList-gridItem').should('have.text', '2Pears')
+
+        cy.get('[data-testid="edit-0"]').click()
+        cy.get('.shoppingList-gridItem').should('have.text', '4Pears')
+    })
+
+    it('truncates decimal amounts and updates the accessible names', () => {
+        stubPrompt('3.7')
+        cy.get('.shoppingList-gridItem span').eq(0).click()
+
+        cy.get('.shoppingList-gridItem')
+            .should('have.text', '3Banana')
+            .and('have.attr', 'aria-label', '3 Banana')
+        cy.get('[data-testid="delete-0"]').should(
+            'have.attr',
+            'aria-label',
+            'Delete Item: 3 Banana'
         )
     })
 })

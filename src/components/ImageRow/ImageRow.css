@@ -1,44 +1,29 @@
-@media only screen and (max-width: 768px) {
-    .image-row {
-        margin: 0 max(2.5vw, 8px);
-        padding: max(1.25vw, 4px) 0;
-        overflow: hidden;
-    }
+.image-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.25rem;
+    padding: 0.625rem clamp(0.5rem, 2vw, 1rem);
+    background-color: var(--color-surface-muted);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
 
+.image {
+    width: clamp(1.5rem, 5vw, 2.5rem);
+    height: auto;
+    aspect-ratio: 1;
+}
+
+@media only screen and (max-width: 768px) {
     .image:nth-child(n + 11) {
         display: none;
     }
-
-    .image {
-        max-width: max(12.5%, 24px);
-    }
 }
 
-@media only screen and (min-width: 768px) {
-    .image-row {
-        margin: 0 min(2vw, 16px) min(2vw, 16px) min(2vw, 16px);
-        padding: min(1vw, 8px);
-    }
-
+/* the illustrations are black line art, so they are inverted on dark surfaces */
+@media (prefers-color-scheme: dark) {
     .image {
-        max-width: 6%;
+        filter: invert(0.92);
     }
-}
-
-@media only screen and (min-width: 1020px) {
-    .image-row {
-        margin: 0 16px;
-        padding: 8px;
-    }
-
-    .image {
-        max-width: 6%;
-    }
-}
-
-.image-row {
-    display: flex;
-    background-color: rgb(207, 207, 207);
-    justify-content: space-between;
-    border-radius: 8px;
 }
